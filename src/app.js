@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var name = require('./server/models/user');
+
 var app = express();
 
 app.use(logger('dev'));
@@ -14,6 +16,7 @@ app.use(cookieParser());
 app.use(express.static(__dirname));
 
 app.get('/*', function (req, res) {
+	console.log(name);
 	res.sendFile(path.join(__dirname,'index.html'))
 });
 

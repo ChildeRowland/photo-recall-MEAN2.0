@@ -1,6 +1,7 @@
 {
   "name": "cm-ex",
   "version": "0.0.0",
+  "main": "server/app.js",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
