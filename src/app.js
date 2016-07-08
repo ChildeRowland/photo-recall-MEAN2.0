@@ -1,13 +1,14 @@
-var express = require('express');
-var path = require('path');
+var express 		= 	require('express');
+var path 			= 	require('path');
 // var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var logger 			= 	require('morgan');
+var cookieParser 	= 	require('cookie-parser');
+var bodyParser 		= 	require('body-parser');
 
 var name = require('./server/models/user');
 
 var app = express();
+var port = process.env.PORT || 3000;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -27,14 +28,18 @@ app.use(function(req, res, next) {
 	next(err);
 });
 
-if (app.get('env') == 'development') {
-	app.listen(3000, function () {
-		console.log('Example listening on port 3000!');
-	});
-} else {
-	app.listen(8080, function () {
-		console.log('Example listening on port 8080!');
-	});
-}
+app.listen(port, function () {
+	console.log('Express server started on port ' + port);
+});
+
+// if (app.get('env') == 'development') {
+// 	app.listen(3000, function () {
+// 		console.log('Example listening on port 3000!');
+// 	});
+// } else {
+// 	app.listen(8080, function () {
+// 		console.log('Example listening on port 8080!');
+// 	});
+// }
 
 module.exports = app;
