@@ -4,6 +4,17 @@ Experimented with how ng build creates the dist folder.  For the time being, the
 
 Server sub-folder seem to work fine for models and routes.
 
+Deployed the application to Heroku:
+1. use the ng build command in the terminal
+2. copy the package.json file into the /dist folder
+3. add the script "start": "node app.js" to package.json
+4. remove the other scripts from package.json
+5. $ git init / git add -A / git commit
+6. $ heroku git:remote -a fast-hamlet-44674 
+7. git push heroku master
+
+Problems:
+1. ng build rewrites everything in the dist folder, so this has to be done for every deploy.
 
 ## July 7, 2016
 
