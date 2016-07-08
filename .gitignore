@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /tmp
+/heroku
 
 # dependencies
 /node_modules
