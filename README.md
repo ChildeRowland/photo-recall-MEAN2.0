@@ -1,5 +1,7 @@
 # CmEx
 
+First attempt at deploying a MEAN2.0 full stack application with angular-cli to heroku.
+
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.9.
 
 ## Development server

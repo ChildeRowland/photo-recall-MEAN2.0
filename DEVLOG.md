@@ -1,3 +1,9 @@
+#cmDevLog
+##Deploying MEAN2.0 applications with angular-cli
+
+## July 9, 2016
+
+
 ## July 8, 2016
 
 Experimented with how ng build creates the dist folder.  For the time being, the express server file has to be directly in the src file.  When I put it in another child folder, like src/server/app.js, the complier throws syntax errors, even though the proper file is being sent.
@@ -13,8 +19,12 @@ Deployed the application to Heroku:
 6. $ heroku git:remote -a fast-hamlet-44674 
 7. git push heroku master
 
-Problems:
+###Problems:
 1. ng build rewrites everything in the dist folder, so this has to be done for every deploy.
+
+###Solution:
+Instead of trying to hack into the ngbuild script that Angular2 is using, I'm using gulp to copy all the files created in the dist directory into a heroku directory.  Gulp scripts clean the heroku directory without touching the .git files, then add a package.json.
+
 
 ## July 7, 2016
 

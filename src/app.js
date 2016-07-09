@@ -32,14 +32,5 @@ app.listen(port, function () {
 	console.log('Express server started on port ' + port);
 });
 
-// if (app.get('env') == 'development') {
-// 	app.listen(3000, function () {
-// 		console.log('Example listening on port 3000!');
-// 	});
-// } else {
-// 	app.listen(8080, function () {
-// 		console.log('Example listening on port 8080!');
-// 	});
-// }
 
 module.exports = app;

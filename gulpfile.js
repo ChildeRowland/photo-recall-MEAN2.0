@@ -11,3 +11,8 @@ gulp.task('build', function() {
 	return gulp.src('dist/**/*')
 		.pipe(gulp.dest(deployment));
 });
+
+gulp.task('package', function() {
+	return gulp.src('package.json')
+		.pipe(gulp.dest(deployment));
+});
