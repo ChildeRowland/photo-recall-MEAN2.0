@@ -1,7 +1,19 @@
 #cmDevLog
-##Deploying MEAN2.0 applications with angular-cli
+Deploying MEAN2.0 applications with angular-cli
+
+###Persistent Issues
+1.ember-cli complier error:
+2.ngbootstrap via system-config
+3.manually adjust the package.json file in the heroku directory for deployment.
+4.New form module... explanations on how to use the module are sparse. 
 
 ## July 9, 2016
+
+Added bootstrap link CND link.
+
+Started building out the back-end with user model.  Then switched to the front-end, adding a navigation component for the navigation bar, and sign-up component for new users.
+
+Spent a lot of time on angular-cli and related docs, trying to access ng bootstrap via the system-config.ts file.
 
 
 ## July 8, 2016
