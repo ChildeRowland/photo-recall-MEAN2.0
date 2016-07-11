@@ -14,7 +14,7 @@ import { SignupComponent } from './signup.component';
 
 describe('Component: Signup', () => {
   it('should create an instance', () => {
-    let component = new SignupComponent();
+    let component = new SignupComponent(null, null);
     expect(component).toBeTruthy();
   });
 });

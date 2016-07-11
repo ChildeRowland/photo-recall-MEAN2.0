@@ -6,12 +6,12 @@ var mongooseUniqueValidator = require('mongoose-unique-validator');
 
 
 var userSchema = new Schema({
-	name: { type: String }
+	name: { type: String },
 	email: { type: String, required: true },	
-	password: { type: String, unique: true }
-	state: { type: String, enum: [ 'basic', 'super', 'admin' ] }
+	password: { type: String, unique: true },
+	state: { type: String, enum: [ 'basic', 'super', 'admin' ], default: 'basic' }
 });
 
-schema.plugin(mongooseUniqueValidator);
+userSchema.plugin(mongooseUniqueValidator);
 
 module.exports = mongoose.model('User', userSchema);
