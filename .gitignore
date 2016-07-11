@@ -16,6 +16,9 @@
 *.launch
 .settings/
 
+#config
+src/server/config.js
+
 # misc
 /.sass-cache
 /connect.lock
