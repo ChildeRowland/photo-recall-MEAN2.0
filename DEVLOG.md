@@ -1,6 +1,15 @@
 #cmDevLog
 Deploying MEAN2.0 applications with angular-cli
 
+###Work-flow
+1. In app directory, run ng test.  This will build a development environment in dist/ and begin watcher for changes.
+2. Start mongodb in separate terminal.
+3. Start the express server in separate terminal, via the dist/ directory: nodemon dist/app .  The drawback are the two watchers restarting over and over as the other works.
+4. Commit changes and push to GitHub.
+5. Use script: npm run build:heroku to prepare for deployment. This rewrites the dist/ directory and copies the file to a separate folder, adds server files, package.json and app.js.
+6. Commit changes to the deployment repo, git push heroku master.
+7. Check database for changes.
+
 ###Persistent Issues
 1. ember-cli complier error
 2. ngbootstrap via system-config
@@ -9,6 +18,8 @@ Deploying MEAN2.0 applications with angular-cli
 
 
 ## July 11
+
+Continued to refine deployment process using angular-cli environment builds and gulp tasks.  See the work flow for how to start and deploy project.
 
 todo: encrypt user info.  AuthService and SignupComponent tests.
 
@@ -55,7 +66,7 @@ Deployed the application to Heroku:
 1. ng build rewrites everything in the dist folder, so this has to be done for every deploy.
 
 ###Solution:
-Instead of trying to hack into the ngbuild script that Angular2 is using, I'm using gulp to copy all the files created in the dist directory into a heroku directory.  Gulp scripts clean the heroku directory without touching the .git files, then add a package.json.
+Instead of trying to hack into the ngbuild script that Angular2 is using, I'm using gulp to copy all the files created in the dist directory into a Heroku directory.  Gulp scripts clean the Heroku directory without touching the .git files, then add a package.json.
 
 --------------------------------
 
