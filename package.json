@@ -29,6 +29,7 @@
     "cookie-parser": "^1.4.3",
     "es6-shim": "0.35.1",
     "express": "^4.14.0",
+    "js-scrypt": "^0.2.0",
     "mongoose": "^4.5.3",
     "mongoose-unique-validator": "^1.0.2",
     "morgan": "^1.7.0",
