@@ -30,4 +30,8 @@ export class AuthService {
 			.catch(err => Observable.throw(err.json()));
 	}
 
+	logout() {
+		localStorage.clear();
+	}
+
 }

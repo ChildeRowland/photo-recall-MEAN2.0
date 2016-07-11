@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var scrypt = require('js-scrypt');
+var jwt = require('jsonwebtoken');
 
 var config = require('../config').security;
 var User = require('../models/user');
@@ -65,9 +66,22 @@ router.post('/signin', function (req, res, next) {
 				}
 
 				if ( doc.password == result ) {
-					res.status(202).json({
-						message: doc.email + " created"
+
+					jwt.sign({ user: doc }, 'replacewithrandom', { expiresIn: 7200 }, function (err, token) {
+						if (err) {
+							res.status(500).json({
+								message: "An error occurred while generating web token",
+								error: err
+							});
+						}
+
+						res.status(202).json({
+							message: doc.name + " signed in",
+							token: token,
+							userId: doc._id
+						});
 					});
+					
 				} else {
 					res.status(401).json({
 						message: "Invalid credentials"
