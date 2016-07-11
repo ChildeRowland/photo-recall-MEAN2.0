@@ -1,3 +1,4 @@
+import { environment } from '../environment';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -7,11 +8,9 @@ import { User } from '../classes/user/user';
 
 @Injectable()
 export class AuthService {
-	private _url = 'http://localhost:3000/user';
+	private _url = environment.production ? 'https://fast-hamlet-44674.herokuapp.com/user' : 'http://localhost:3000/user';
 	
-	constructor(private _http: Http) {
-
-	}
+	constructor(private _http: Http) { }
 
 	signup(user: User) {
 		const body = JSON.stringify(user);

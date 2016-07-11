@@ -10,13 +10,15 @@ Deploying MEAN2.0 applications with angular-cli
 
 ## July 11
 
-todo: encrypt user info and hide Mongo url.  AuthService and SignupComponent tests.
+todo: encrypt user info.  AuthService and SignupComponent tests.
 
 --------------------------------
 
 ## July 10, 2016
 
 Started on the user router.  New users can sign up and save basic profile information to the db.  Passwords aren't encrypted yet.  In course, added an AuthComponent to hold all the sign-up, sign-in, and logout components.  Added AuthService to store all the http requests.
+
+Connected the deployed Heroku application via MongoLab.  Moved the mongoose connect URL variable to a hidden config.js file.  Explored Angular2 environments, to switch between development and production URLs for server requests.
 
 Slight restructuring of the server directory for models and routes.
 
