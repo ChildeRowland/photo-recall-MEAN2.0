@@ -20,5 +20,6 @@ export class LogoutComponent implements OnInit {
 
 	onLogout() {
 		this._authService.logout();
+		console.log(localStorage);
 	}
 }
