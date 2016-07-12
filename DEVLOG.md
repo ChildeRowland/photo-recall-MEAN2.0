@@ -17,11 +17,17 @@ Deploying MEAN2.0 applications with angular-cli
 4. New form module... explanations on how to use the module are sparse. 
 
 
+## July 12
+
+todo: AuthService and SignupComponent tests. Rename app in line with project direction.
+
+--------------------------------
+
 ## July 11
 
-Continued to refine deployment process using angular-cli environment builds and gulp tasks.  See the work flow for how to start and deploy project.
+User signup, signin, and logout.  Including: Angular components, AuthService, and express routes.  Added password security with scrypt-js.  Save token to local storage.
 
-todo: encrypt user info.  AuthService and SignupComponent tests.
+Continued to refine deployment process using angular-cli environment builds and gulp tasks.  See the work flow for how to start and deploy project.
 
 --------------------------------
 
