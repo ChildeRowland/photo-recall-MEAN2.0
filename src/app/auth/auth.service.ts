@@ -32,6 +32,7 @@ export class AuthService {
 
 	logout() {
 		localStorage.clear();
+		console.log(localStorage);
 	}
 
 }
