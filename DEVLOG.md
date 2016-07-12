@@ -19,7 +19,9 @@ Deploying MEAN2.0 applications with angular-cli
 
 ## July 12
 
-todo: AuthService and SignupComponent tests. Rename app in line with project direction.
+Basic testing for AuthService and User components.
+
+todo: Rename app in line with project direction.
 
 --------------------------------
 
