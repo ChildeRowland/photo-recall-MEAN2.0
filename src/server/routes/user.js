@@ -66,8 +66,9 @@ router.post('/signin', function (req, res, next) {
 				}
 
 				if ( doc.password == result ) {
+					var tokenSalt = config.addSalt();
 
-					jwt.sign({ user: doc }, 'replacewithrandom', { expiresIn: 7200 }, function (err, token) {
+					jwt.sign({ user: doc }, tokenSalt, { expiresIn: 7200 }, function (err, token) {
 						if (err) {
 							res.status(500).json({
 								message: "An error occurred while generating web token",
@@ -78,6 +79,7 @@ router.post('/signin', function (req, res, next) {
 						res.status(202).json({
 							message: doc.name + " signed in",
 							token: token,
+							salt: tokenSalt,
 							userId: doc._id
 						});
 					});

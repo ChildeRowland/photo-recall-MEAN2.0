@@ -25,7 +25,7 @@ export class AuthService {
 		const body = JSON.stringify(user);
 		const headers = new Headers({ 'Content-Type': 'application/json' });
 
-		return this._http.post(`${this._url}/signup`, body, headers)
+		return this._http.post(`${this._url}/signin`, body, {headers: headers})
 			.map(res => res.json())
 			.catch(err => Observable.throw(err.json()));
 	}
