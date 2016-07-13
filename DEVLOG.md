@@ -7,8 +7,9 @@ Deploying MEAN2.0 applications with angular-cli
 3. Start the express server in separate terminal, via the dist/ directory: nodemon dist/app .  The drawback are the two watchers restarting over and over as the other works.
 4. Commit changes and push to GitHub.
 5. Use script: npm run build:heroku to prepare for deployment. This rewrites the dist/ directory and copies the file to a separate folder, adds server files, package.json and app.js.
-6. Commit changes to the deployment repo, git push heroku master.
-7. Check database for changes.
+6. cd heroku
+7. Commit changes to the deployment repo, git push heroku master.
+8. Check database for changes.
 
 ###Persistent Issues
 1. ember-cli complier error
