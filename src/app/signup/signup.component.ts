@@ -32,6 +32,7 @@ export class SignupComponent implements OnInit {
 				this.signupForm.value.password,
 				this.signupForm.value.name
 			);
+		// remove for deploy
 		console.log(user);
 		this._authService.signup(user)
 			.subscribe(

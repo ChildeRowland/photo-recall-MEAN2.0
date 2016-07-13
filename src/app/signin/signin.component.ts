@@ -22,6 +22,8 @@ export class SigninComponent implements OnInit {
 
 		this._authservice.signin(user)
 			.subscribe(data => {
+				// remove for deploy
+				console.log(data);
 				localStorage.setItem('token', data.token);
 				localStorage.setItem('salt', data.salt);
 				localStorage.setItem('userId', data.userId);

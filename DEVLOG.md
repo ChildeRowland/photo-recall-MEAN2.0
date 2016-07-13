@@ -16,6 +16,15 @@ Deploying MEAN2.0 applications with angular-cli
 3. manually adjust the package.json file in the heroku directory for deployment.
 4. New form module... explanations on how to use the module are sparse. 
 
+## July 13
+
+--------------------------------
+
+## July 12
+
+Added Dropdown component using css and Angular2, moved all the auth into the component.  Use ngIf to check is there is a user signed in and which menus are being displayed.  Used ElementRef to determine if someone is clicking inside or out of the dropdowns.
+
+--------------------------------
 
 ## July 12
 
