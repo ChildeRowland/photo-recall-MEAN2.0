@@ -1,3 +1,14 @@
-<p>
-  dropdown works!
-</p>
+<ul class="nav navbar-nav">
+	<li class="dropdown">
+		<a (click)="showMenu()" class="dropdown-toggle" role="button">
+			{{ title }} 
+		</a>
+
+		<ul class="dropdown-menu" *ngIf="isVisable">
+			<li>
+				<app-signin *ngIf="title == 'Sign In'"></app-signin>
+				<app-signup *ngIf="title == 'New User'"></app-signup>
+			</li>
+		</ul>
+	</li>
+</ul>

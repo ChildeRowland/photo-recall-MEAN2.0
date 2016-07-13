@@ -1,50 +1,44 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 
 import { SigninComponent } from '../signin/signin.component';
+import { SignupComponent } from '../signup/signup.component';
 
 @Component({
 	moduleId: module.id,
 	selector: 'app-dropdown',
-	template: `
-		<ul class="nav navbar-nav">
-			<li class="dropdown">
-				<a (click)="show()" class="dropdown-toggle" role="button">
-					{{ title }} 
-					<span class="caret"></span></a>
-
-				<ul class="dropdown-menu" *ngIf="isVisable">
-					<li>
-						<app-signin></app-signin>
-					</li>
-				</ul>
-			</li>
-		</ul>
-
-	`,
-	styles: [`
-		.dropdown-menu{
-			display: block;
-			min-width: 450px;
-		}
-		.dropdown-menu>li {
-			margin: 15px;
-		}
-	`],
-	directives: [ SigninComponent ]
+	host: { '(document:click)': 'handleClick($event)' },
+	templateUrl: 'dropdown.component.html',
+	styleUrls: ['dropdown.component.css'],
+	directives: [ SigninComponent, SignupComponent ]
 })
 export class DropdownComponent implements OnInit {
-	isVisable = false;
-	@Input() title = 'Show';
+	public elementRef;
+	isVisable: boolean = false;
+	@Input() title: string = 'Show';
 
-	constructor() {}
+	constructor(myElement: ElementRef) {
+       this.elementRef = myElement;
+   	}
 
-	ngOnInit() {
+	ngOnInit() {}
 
-	}
-
-	show(){
+	showMenu(){
 		this.isVisable = !this.isVisable;
-		console.log(this.isVisable);
 	}
+
+	// check to see if user clicks outside the dropdown
+	handleClick(event){
+       var clickedComponent = event.target;
+       var inside = false;
+       do {
+           if (clickedComponent === this.elementRef.nativeElement) {
+               inside = true;
+           }
+           clickedComponent = clickedComponent.parentNode;
+       } while (clickedComponent);
+       if(this.isVisable && !inside) {
+           this.isVisable = false;
+       }
+   }
 
 }

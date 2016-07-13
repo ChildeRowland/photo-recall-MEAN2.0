@@ -1,0 +1,8 @@
+.dropdown-menu{
+	display: block;
+	min-width: 450px;
+}
+
+.dropdown-menu>li {
+	margin: 15px;
+}

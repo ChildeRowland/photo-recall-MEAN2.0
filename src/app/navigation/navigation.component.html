@@ -31,12 +31,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li><button class="btn">logout</button></li>
+        <li><app-logout *ngIf="isUser()"></app-logout></li>
         <li class="dropdown">
-          <app-dropdown [title]="title"></app-dropdown>
+          <app-dropdown *ngIf="!isUser()" [title]="signinTitle"></app-dropdown>
         </li>
         <li class="dropdown">
-          <app-dropdown></app-dropdown>
+          <app-dropdown *ngIf="!isUser()" [title]="signupTitle"></app-dropdown>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
