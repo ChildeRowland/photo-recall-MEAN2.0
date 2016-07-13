@@ -18,19 +18,15 @@ Deploying MEAN2.0 applications with angular-cli
 
 ## July 13
 
+todo: Rename app in line with project direction.
+
 --------------------------------
 
 ## July 12
 
 Added Dropdown component using css and Angular2, moved all the auth into the component.  Use ngIf to check is there is a user signed in and which menus are being displayed.  Used ElementRef to determine if someone is clicking inside or out of the dropdowns.
 
---------------------------------
-
-## July 12
-
 Basic testing for AuthService and User components.
-
-todo: Rename app in line with project direction.
 
 --------------------------------
 
