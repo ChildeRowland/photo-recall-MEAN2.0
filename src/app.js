@@ -7,6 +7,7 @@ var logger 			= 	require('morgan');
 var cookieParser 	= 	require('cookie-parser');
 var bodyParser 		= 	require('body-parser');
 
+var uploadRoutes = require('./server/routes/upload');
 var userRoutes = require('./server/routes/user');
 var appRoutes = require('./server/routes/app');
 
@@ -17,13 +18,16 @@ mongoose.connect(db);
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(__dirname));
+app.use('/public', express.static(path.join(__dirname, 'uploads')));
+
 
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE');
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 
@@ -31,6 +35,7 @@ app.use(function(req, res, next) {
 // 	res.sendFile(path.join(__dirname,'index.html'))
 // });
 
+app.use('/upload', uploadRoutes);
 app.use('/user', userRoutes);
 app.use('/', appRoutes);
 
@@ -47,3 +52,8 @@ app.listen(port, function () {
 
 
 module.exports = app;
+
+
+
+
+
