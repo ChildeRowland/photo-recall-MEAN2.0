@@ -17,9 +17,22 @@ Deploying MEAN2.0 applications with angular-cli
 3. manually adjust the package.json file in the heroku directory for deployment.
 4. New form module... explanations on how to use the module are sparse. 
 
+## July 15
+
+--------------------------------
+
+## July 14
+
+Attemped to import FileStack's npm module for uploading and storing photo.  The widgets work outside the Angular2 app, but not inside a component.  I can load the library into a component, but I can't get the library to wrap the html template.
+
+https://www.npmjs.com/package/filepicker-js
+
+--------------------------------
+
 ## July 13
 
-todo: Rename app in line with project direction.
+Added a photo uploader using multer. 
+https://www.npmjs.com/package/multer
 
 --------------------------------
 

@@ -7,10 +7,12 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  'filepicker': 'vendor/filepicker-js'
 };
 
 /** User packages configuration. */
 const packages: any = {
+  filepicker: { defaultExtension: 'js', main: 'index.js' }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -41,6 +43,7 @@ const barrels: string[] = [
   'app/logout',
   'app/dropdown',
   'app/uploadimage',
+  'app/filestack',
   /** @cli-barrel */
 ];
 

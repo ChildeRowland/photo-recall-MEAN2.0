@@ -8,9 +8,15 @@ import { UploadimageComponent } from './uploadimage/uploadimage.component';
 	selector: 'app-root',
 	templateUrl: 'app.component.html',
 	styleUrls: ['app.component.css'],
-	directives: [ NavigationComponent, UploadimageComponent ]
+	directives: [ NavigationComponent, UploadimageComponent ],
 })
 
 export class AppComponent {
 	title = 'Hello Taco';
+
+	constructor() {}
+
+	ngOnInit() {}
 }
+
+
