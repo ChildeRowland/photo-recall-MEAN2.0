@@ -44,6 +44,7 @@ const barrels: string[] = [
   'app/dropdown',
   'app/uploadimage',
   'app/filestack',
+  'app/window',
   /** @cli-barrel */
 ];
 

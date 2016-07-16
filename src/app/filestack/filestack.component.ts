@@ -12,12 +12,15 @@ import * as filepicker from 'filepicker';
 })
 
 export class FilestackComponent implements OnInit, AfterViewInit {
-	private _fp = filepicker;
+	//private _fp = filepicker;
 
-	constructor(private elementRef:ElementRef) {}
+	constructor(private elementRef:ElementRef) {
+		window['fp'] = filepicker;
+	}
 
 	ngOnInit() {
-		console.log(filepicker)
+		console.log(window['fp']);
+		console.log(filepicker);
 	}
 
 	ngAfterViewInit() {

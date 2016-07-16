@@ -17,7 +17,13 @@ Deploying MEAN2.0 applications with angular-cli
 3. manually adjust the package.json file in the heroku directory for deployment.
 4. New form module... explanations on how to use the module are sparse. 
 
-## July 15
+## July 17
+
+## July 16
+
+Continued to try and implement the FileStack filepicker.  The filepicker-js library is on the window object, but I can't access any of the functionality.
+
+Explored the window object some, and how to add properties without the Typescript compilation errors.
 
 --------------------------------
 
