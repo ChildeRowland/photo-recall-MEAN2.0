@@ -45,6 +45,7 @@ const barrels: string[] = [
   'app/uploadimage',
   'app/filestack',
   'app/window',
+  'app/question-input',
   /** @cli-barrel */
 ];
 
