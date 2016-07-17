@@ -19,6 +19,8 @@ Deploying MEAN2.0 applications with angular-cli
 
 ## July 17
 
+--------------------------------
+
 ## July 16
 
 Continued to try and implement the FileStack filepicker.  The filepicker-js library is on the window object, but I can't access any of the functionality.
