@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { NavigationComponent } from './navigation/navigation.component';
 
@@ -7,17 +8,15 @@ import { NavigationComponent } from './navigation/navigation.component';
 	selector: 'app-root',
 	templateUrl: 'app.component.html',
 	styleUrls: ['app.component.css'],
-	directives: [ NavigationComponent ],
+	directives: [ ROUTER_DIRECTIVES, NavigationComponent ],
 })
 
 export class AppComponent {
 	title = 'Hello Taco';
 
-	constructor() {
-	}
+	constructor() {}
 
-	ngOnInit() {
-	}
+	ngOnInit() {}
 }
 
 
