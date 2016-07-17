@@ -23,6 +23,10 @@ Deploying MEAN2.0 applications with angular-cli
 
 ## July 16
 
+Added validators to the signin component.
+
+Added a div to 'block' forms while they are being submitted.
+
 Continued to try and implement the FileStack filepicker.  The filepicker-js library is on the window object, but I can't access any of the functionality.
 
 Explored the window object some, and how to add properties without the Typescript compilation errors.
