@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgClass } from '@angular/common';
 
 import { User } from '../classes/user/user';
 import { AuthService } from '../auth/auth.service'
@@ -11,23 +12,26 @@ import { AuthService } from '../auth/auth.service'
 	providers: [ AuthService ]
 })
 export class SigninComponent implements OnInit {
+	submitting = false;
 
-	constructor(private _authservice: AuthService) {}
+	constructor(private _authService: AuthService) {}
 
 	ngOnInit() {
 	}
 
 	signinSubmit(form:any) {
+		this.submitting = true;
 		const user:User = new User(form.email, form.password, null);
 
-		this._authservice.signin(user)
+		this._authService.signin(user)
 			.subscribe(data => {
 				// remove for deploy
 				console.log(data);
 				localStorage.setItem('token', data.token);
 				localStorage.setItem('salt', data.salt);
 				localStorage.setItem('userId', data.userId);
-			}, err => console.log(err));
+			}, err => console.log(err),
+			() => this.submitting = false);
 	}
 
 }

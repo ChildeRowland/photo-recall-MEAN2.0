@@ -1,32 +1,34 @@
-<section>
-	<form (ngSubmit)="signinSubmit(form.value)" #form="ngForm">
-		<fieldset>
-			<legend>
-				Sign In
-			</legend>
-			<div class="form-group">
-				<label for="content">User Email</label>
-				<input type="email" 
-					   class="form-control" 
-					   id="email"
-					   required
-					   ngControl="email"
-					   #email />
-			</div>
+<div [ngClass]="{whitewash: submitting}">
+	<section>
+		<form (ngSubmit)="signinSubmit(form.value)" #form="ngForm">
+			<fieldset>
+				<legend>
+					Sign In
+				</legend>
+				<div class="form-group">
+					<label for="content">User Email</label>
+					<input type="email" 
+						   class="form-control" 
+						   id="email"
+						   required
+						   ngControl="email"
+						   #email />
+				</div>
 
-			<div class="form-group">
-				<label for="content">User Password</label>
-				<input type="password" 
-					   class="form-control" 
-					   id="password"
-					   required
-					   ngControl="password"
-					   #password />
-			</div>
+				<div class="form-group">
+					<label for="content">User Password</label>
+					<input type="password" 
+						   class="form-control" 
+						   id="password"
+						   required
+						   ngControl="password"
+						   #password />
+				</div>
 
-			<button type="submit" class="btn btn-primary">
-				Log In
-			</button>
-		</fieldset>
-	</form>
-</section>
+				<button type="submit" class="btn btn-primary">
+					Log In
+				</button>
+			</fieldset>
+		</form>
+	</section>
+</div>
