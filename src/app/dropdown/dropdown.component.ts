@@ -11,6 +11,7 @@ import { SignupComponent } from '../signup/signup.component';
 	styleUrls: ['dropdown.component.css'],
 	directives: [ SigninComponent, SignupComponent ]
 })
+
 export class DropdownComponent implements OnInit {
 	public elementRef;
 	isVisable: boolean = false;
