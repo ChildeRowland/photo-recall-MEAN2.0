@@ -10,7 +10,6 @@ export class QuestionInputComponent implements OnInit {
 
 	constructor() {}
 
-	ngOnInit() {
-	}
+	ngOnInit() {}
 
 }

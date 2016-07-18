@@ -46,6 +46,7 @@ const barrels: string[] = [
   'app/filestack',
   'app/window',
   'app/question-input',
+  'app/faq',
   /** @cli-barrel */
 ];
 

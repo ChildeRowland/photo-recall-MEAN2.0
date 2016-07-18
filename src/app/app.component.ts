@@ -12,7 +12,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 })
 
 export class AppComponent {
-	title = 'Hello Taco';
+	title: string = 'Photo Recall';
 
 	constructor() {}
 

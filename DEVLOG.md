@@ -17,7 +17,19 @@ Deploying MEAN2.0 applications with angular-cli
 3. manually adjust the package.json file in the heroku directory for deployment.
 4. New form module... explanations on how to use the module are sparse. 
 
+## July 18
+
+
+
+--------------------------------
+
 ## July 17
+
+Incorperated the newest version of the router: app.routes.ts, which is loaded into the main.ts file.  Then accessed the routerLink and routerOutlet via Router_DIRCTIVES in the app.component and the navigation.component.
+
+Started on the questions forms, for game masters to upload one question at a time for there sessions.
+
+Added a FAQ to explain the state of the application.
 
 --------------------------------
 
