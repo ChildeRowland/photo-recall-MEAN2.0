@@ -8,10 +8,22 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class FormErrorComponent implements OnInit {
-	@Input() message: string = 'Error Message';
+
+	@Input() data;
 
 	constructor() {}
 
 	ngOnInit() {}
+
+	// isError(control: Control, location){
+		
+	// 	if ( control.touched && control.errors ) {
+
+	// 		location.message = control.errors['error']['message'];
+	// 		location.alertType = "alert-danger";
+	// 		return true;
+	// 	}
+
+	// }
 
 }

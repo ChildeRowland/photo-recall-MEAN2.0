@@ -7,14 +7,30 @@
 
 			<div class="form-group">
 				<label>Question</label>
-				<input type="text" class="form-control">
+				<input type="text" 
+					   class="form-control" 
+					   [ngFormControl]="questionForm.find('question')"
+					   #question="ngForm">
+
+				<div *ngIf="isError(question)">
+					<div class="alert alert-danger">
+						{{ errMessage(question).error.message }}
+					</div>
+				</div>
 			</div>
 
 			<div class="form-group">
 				<label>Answers</label>
 				<input type="text" 
 					   class="form-control" 
-					   [ngFormControl]="questionForm.find('answers')">
+					   [ngFormControl]="questionForm.find('answers')"
+					   #answers="ngForm">
+
+				<div *ngIf="isError(answers)">
+					<div class="alert alert-danger">
+						{{ errMessage(answers).error.message }}
+					</div>
+				</div>
 			</div>
 
 			<div class="form-group">
@@ -26,7 +42,15 @@
 				<label>Test Input</label>
 				<input type="text" 
 					   class="form-control"
-					   [ngFormControl]="questionForm.find('testInput')">
+					   [ngFormControl]="questionForm.find('testInput')"
+					   #testInput="ngForm"
+					   (keyup)="checkAnswers(answers, testInput)">
+
+				<div *ngIf="isInfo(testInput)">
+					<div class="alert alert-info">
+						{{ infoMessage(testInput).message }}
+					</div>
+				</div>
 			</div>
 		</fieldset>
 

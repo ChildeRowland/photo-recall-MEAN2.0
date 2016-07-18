@@ -1,3 +1,5 @@
-<div class="alert">
-	{{ message }}
+<div (change)="onErrorHandled()">
+	<div class="alert {{ data?.alertType }}">
+		{{ data?.message }}
+	</div>
 </div>

@@ -16,19 +16,38 @@ export class QuestionInputComponent implements OnInit {
 
 	ngOnInit() {
 		this.questionForm = this._fb.group({
-			question: ['', Validators.compose([ Validators.required ])],
-			answers: ['', Validators.compose([ Validators.required ])],
+			question: ['', Validators.compose([ this.questionValidators ])],
+			answers: ['', Validators.compose([ this.questionValidators ])],
 			hint: ['', Validators.compose([])],
 			testInput: ['', Validators.compose([])]
-		}, { validator: this.checkAnswers })
+		})
+	}
+
+	// RENDER MESSAGES
+	isError(control: Control) {
+		if ( control.touched && control.errors ) {
+			return true;
+		}
+	}
+
+	errMessage(control: Control) {
+		return control.errors;
+	}
+
+	isInfo(control: Control) {
+		if ( control.dirty ) {
+			return true;
+		}
+	}
+
+	infoMessage(control: Control) {
+		return control;
 	}
 
 	// CUSTOM VALIDATORS 
-	private checkAnswers(group: ControlGroup) {
-		var answers = group.find('answers').value;
-		var testInput = group.find('testInput').value;
+	private checkAnswers(answers, testInput) {
 
-		if (answers == '' || testInput == '') {
+		if (answers.value == '' || testInput.value == '') {
 			return null;
 		}
 
@@ -43,17 +62,33 @@ export class QuestionInputComponent implements OnInit {
 		}
 
 		var isMatching = function (number) {
-			if ( number > 0 ) {
-				console.log('There\'s a match');
+			if ( number > 0 ) { 
+				testInput['message'] = "This would eval Correctly";
 			} else {
-				console.log('No match');
+				testInput['message'] = "This would eval Incorrectly";
 			}
 		}
 
-		matchString(testInput, answers.split(' '), isMatching);
+		matchString(testInput.value, answers.value.split(' '), isMatching);
 	}
 
+	private questionValidators(control: Control) {
+		var ctrl = control.value;
+
+		if ( ctrl.length <= 0 ) {
+			return { error: { message: "This field is required" } }
+		}
+
+		if ( ctrl.indexOf('?') < 0 ) {
+			return { error: { message: "Should be in the form of a Question" } }
+		}
+
+		return null;
+	}
 }
+
+
+
 
 
 
