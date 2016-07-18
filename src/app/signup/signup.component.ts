@@ -93,10 +93,21 @@ export class SignupComponent implements OnInit {
 	}
 
 	private hasMinComplexity(control: Control) {
+		// const minLength = 6
+
+		// if (control.value.length < minLength) {
+		// 	return {
+		// 		hasMinComplexity: { notMinLength: minLength }
+		// 	}
+		// } 
+
 		if (control.value.indexOf(' ') >= 0) {
 			return {
 				hasMinComplexity: { noSpaces: true }
-			};
+			}
 		}
+
+		return null
 	}
+
 }

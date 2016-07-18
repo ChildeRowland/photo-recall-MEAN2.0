@@ -1,5 +1,5 @@
 <section>
-	<form>
+	<form [ngFormModel]="questionForm">
 		<fieldset>
 			<legend>
 				New Question
@@ -12,7 +12,9 @@
 
 			<div class="form-group">
 				<label>Answers</label>
-				<input type="text" class="form-control">
+				<input type="text" 
+					   class="form-control" 
+					   [ngFormControl]="questionForm.find('answers')">
 			</div>
 
 			<div class="form-group">
@@ -22,7 +24,9 @@
 
 			<div class="form-group">
 				<label>Test Input</label>
-				<input type="text" class="form-control">
+				<input type="text" 
+					   class="form-control"
+					   [ngFormControl]="questionForm.find('testInput')">
 			</div>
 		</fieldset>
 

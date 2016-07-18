@@ -25,9 +25,11 @@ Deploying MEAN2.0 applications with angular-cli
 
 ## July 17
 
-Incorperated the newest version of the router: app.routes.ts, which is loaded into the main.ts file.  Then accessed the routerLink and routerOutlet via Router_DIRCTIVES in the app.component and the navigation.component.
+Incorporated the newest version of the router: app.routes.ts, which is loaded into the main.ts file.  Then accessed the routerLink and routerOutlet via Router_DIRCTIVES in the app.component and the navigation.component.  
 
-Started on the questions forms, for game masters to upload one question at a time for there sessions.
+Added location hash strategy.
+
+Started on the questions forms, for game masters to upload one question at a time for sessions. Wrote a function to check a single possible answer against an array of possible acceptable answers.
 
 Added a FAQ to explain the state of the application.
 
