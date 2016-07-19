@@ -35,7 +35,7 @@ export class QuestionInputComponent implements OnInit {
 	}
 
 	isInfo(control: Control) {
-		if ( control.dirty ) {
+		if ( control.dirty && control.value.length > 0) {
 			return true;
 		}
 	}
@@ -63,9 +63,11 @@ export class QuestionInputComponent implements OnInit {
 
 		var isMatching = function (number) {
 			if ( number > 0 ) { 
-				testInput['message'] = "This would eval Correctly";
+				testInput['message'] = "This answer would be Correct";
+				testInput['alert'] = "alert-info";
 			} else {
-				testInput['message'] = "This would eval Incorrectly";
+				testInput['message'] = "This answer would be Incorrect";
+				testInput['alert'] = "alert-warning";
 			}
 		}
 
@@ -77,10 +79,6 @@ export class QuestionInputComponent implements OnInit {
 
 		if ( ctrl.length <= 0 ) {
 			return { error: { message: "This field is required" } }
-		}
-
-		if ( ctrl.indexOf('?') < 0 ) {
-			return { error: { message: "Should be in the form of a Question" } }
 		}
 
 		return null;

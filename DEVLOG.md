@@ -17,9 +17,13 @@ Deploying MEAN2.0 applications with angular-cli
 3. manually adjust the package.json file in the heroku directory for deployment.
 4. New form module... explanations on how to use the module are sparse. 
 
+## July 19
+
+--------------------------------
+
 ## July 18
 
-
+Tried to implement an app wide error, warning, info, directive, but there was too much variation to consolidate.  Added error messages to one of the the forms, and I'll see if I can consolidate it.
 
 --------------------------------
 

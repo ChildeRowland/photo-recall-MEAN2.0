@@ -7,6 +7,7 @@
 
 			<div class="form-group">
 				<label>Question</label>
+				<div><em>Ask one question about the photograph.</em></div>
 				<input type="text" 
 					   class="form-control" 
 					   [ngFormControl]="questionForm.find('question')"
@@ -21,6 +22,8 @@
 
 			<div class="form-group">
 				<label>Answers</label>
+				<div><em>Enter the answers you want to evaulate as true, seperated by a space, ex: lamp light desklamp tasklight etc.</em></div>
+				<div><em>If the answer is a phrase, remove the spaces between correct phrases, ex: underthetable undertable beneathtable etc.</em></div>
 				<input type="text" 
 					   class="form-control" 
 					   [ngFormControl]="questionForm.find('answers')"
@@ -35,11 +38,13 @@
 
 			<div class="form-group">
 				<label>Hint</label>
+				<div><em>Clue the player of the type of answer you are looking for, ex: use zero instead of 0.</em></div>
 				<input type="text" class="form-control">
 			</div>
 
 			<div class="form-group">
 				<label>Test Input</label>
+				<div><em>Test one answer at a time, and make sure it evalutes the way you want.</em></div>
 				<input type="text" 
 					   class="form-control"
 					   [ngFormControl]="questionForm.find('testInput')"
@@ -47,14 +52,14 @@
 					   (keyup)="checkAnswers(answers, testInput)">
 
 				<div *ngIf="isInfo(testInput)">
-					<div class="alert alert-info">
+					<div class="alert {{ testInput.alert }}">
 						{{ infoMessage(testInput).message }}
 					</div>
 				</div>
 			</div>
 		</fieldset>
 
-		<button class="btn btn-primary" type="submit">
+		<button class="btn btn-primary" type="submit" [disabled]="!questionForm.valid">
 			Add Question
 		</button>
 	</form>
