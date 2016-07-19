@@ -25,6 +25,8 @@ Deploying MEAN2.0 applications with angular-cli
 
 Tried to implement an app wide error, warning, info, directive, but there was too much variation to consolidate.  Added error messages to one of the the forms, and I'll see if I can consolidate it.
 
+Began update the app name and remotes, package.json, file structure, heroku remote, etc.
+
 --------------------------------
 
 ## July 17
