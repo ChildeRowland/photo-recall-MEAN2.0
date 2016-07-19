@@ -1,5 +1,5 @@
 {
-  "name": "cm-ex",
+  "name": "Photo Recall",
   "repository": "https://github.com/ChildeRowland/angular-cli-mean2.0.git",
   "version": "0.0.0",
   "main": "server/app.js",
