@@ -1,7 +1,13 @@
 {
-  "name": "Photo Recall",
-  "repository": "https://github.com/ChildeRowland/angular-cli-mean2.0.git",
+  "name": "photo-recall-mean2",
+  "repository": "https://github.com/ChildeRowland/photo-recall-MEAN2.0.git",
   "version": "0.0.0",
+  "home": "https://photorecall.herokuapp.com/",
+  "author": {
+      "name" : "Christopher Mehmed", 
+      "email" : "chrismehmed@gmail.com",
+      "url" : "http://www.christophermehmed.com"
+    },
   "main": "server/app.js",
   "license": "MIT",
   "angular-cli": {},
