@@ -8,7 +8,7 @@ import { User } from '../classes/user/user';
 
 @Injectable()
 export class AuthService {
-	private _url = environment.production ? 'https://fast-hamlet-44674.herokuapp.com/user' : 'http://localhost:3000/user';
+	private _url = environment.production ? 'https://photorecall.herokuapp.com/user' : 'http://localhost:3000/user';
 	
 	constructor(private _http: Http) { }
 

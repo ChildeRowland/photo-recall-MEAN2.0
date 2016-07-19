@@ -2,7 +2,7 @@
 
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { FormBuilder } from '@angular/common';
+import { FormBuilder } from '@angular/forms';
 
 import {
   beforeEach, beforeEachProviders,
