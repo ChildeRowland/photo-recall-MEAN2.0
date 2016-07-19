@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Control, ControlGroup, FormBuilder, Validators } from '@angular/common';
+import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Question } from '../../classes/question/question';
 
@@ -7,10 +7,11 @@ import { Question } from '../../classes/question/question';
 	moduleId: module.id,
 	selector: 'app-question-input',
 	templateUrl: 'question-input.component.html',
-	styleUrls: ['question-input.component.css']
+	styleUrls: ['question-input.component.css'],
+	directives: [ REACTIVE_FORM_DIRECTIVES ]
 })
 export class QuestionInputComponent implements OnInit {
-	questionForm: ControlGroup;
+	questionForm: FormGroup;
 
 	constructor(private _fb:FormBuilder) {}
 
@@ -23,24 +24,28 @@ export class QuestionInputComponent implements OnInit {
 		})
 	}
 
+	addQuestion() {
+		console.log(this.questionForm.value);
+	}
+
 	// RENDER MESSAGES
-	isError(control: Control) {
+	isError(control: FormControl) {
 		if ( control.touched && control.errors ) {
 			return true;
 		}
 	}
 
-	errMessage(control: Control) {
+	errMessage(control: FormControl) {
 		return control.errors;
 	}
 
-	isInfo(control: Control) {
+	isInfo(control: FormControl) {
 		if ( control.dirty && control.value.length > 0) {
 			return true;
 		}
 	}
 
-	infoMessage(control: Control) {
+	infoMessage(control: FormControl) {
 		return control;
 	}
 
@@ -74,7 +79,7 @@ export class QuestionInputComponent implements OnInit {
 		matchString(testInput.value, answers.value.split(' '), isMatching);
 	}
 
-	private questionValidators(control: Control) {
+	private questionValidators(control: FormControl) {
 		var ctrl = control.value;
 
 		if ( ctrl.length <= 0 ) {

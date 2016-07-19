@@ -1,40 +1,40 @@
 <div [ngClass]="{whitewash: submitting}">	
 	<section>
-		<form [ngFormModel]="signupForm" (ngSubmit)="onSignup()">
+		<form [formGroup]="signupForm" (ngSubmit)="onSignup()">
 			<fieldset>
 				<legend>
 					Sign Up
 				</legend>
 				<div class="form-group">
 					<label for="name">Name</label>
-					<input class="form-control"
+					<input type="text" 
+						   class="form-control"
 						   id="name"
-						   type="text"
-						   [ngFormControl]="signupForm.find('name')">
+						   formControlName="name">
 				</div>
 
 				<div class="form-group">
 					<label for="email">Email</label>
-					<input class="form-control"
+					<input type="email" 
+						   class="form-control"
 						   id="email"
-						   [ngFormControl]="signupForm.find('email')"
-						   type="email">
+						   formControlName="email">
 				</div>
 
 				<div class="form-group">
 					<label for="password">Password</label>
-					<input class="form-control"
+					<input type="password" 
+						   class="form-control"
 						   id="password"
-						   [ngFormControl]="signupForm.find('password')"
-						   type="password">
+						   formControlName="password">
 				</div>
 
 				<div class="form-group">
 					<label for="confirmPassword">Confirm Password</label>
-					<input class="form-control"
+					<input type="password"
+						   class="form-control"
 						   id="confirm-password"
-						   [ngFormControl]="signupForm.find('confirmPassword')"
-						   type="password">
+						   formControlName="confirmPassword">
 				</div>
 			</fieldset>	
 

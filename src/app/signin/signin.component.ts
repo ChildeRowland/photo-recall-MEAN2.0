@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { NgForm } from '@angular/forms';
 
 import { User } from '../classes/user/user';
 import { AuthService } from '../auth/auth.service'
@@ -16,8 +17,7 @@ export class SigninComponent implements OnInit {
 
 	constructor(private _authService: AuthService) {}
 
-	ngOnInit() {
-	}
+	ngOnInit() {}
 
 	signinSubmit(form:any) {
 		this.submitting = true;

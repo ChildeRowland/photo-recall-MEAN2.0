@@ -17,7 +17,13 @@ Deploying MEAN2.0 applications with angular-cli
 3. manually adjust the package.json file in the heroku directory for deployment.
 4. New form module... explanations on how to use the module are sparse. 
 
+## July 20
+
+--------------------------------
+
 ## July 19
+
+Updated to the new Angular forms API.  Added the providers to the bootstrap file, and imported to the form components.  Reworked the code for best practices.
 
 --------------------------------
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Control, ControlGroup, FormBuilder, Validators } from '@angular/common';
+import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { User } from '../classes/user/user';
 import { AuthService } from '../auth/auth.service';
@@ -9,11 +9,12 @@ import { AuthService } from '../auth/auth.service';
 	selector: 'app-signup',
 	templateUrl: 'signup.component.html',
 	styleUrls: ['signup.component.css'],
+	directives: [ REACTIVE_FORM_DIRECTIVES ],
 	providers: [ AuthService ]
 })
 
 export class SignupComponent implements OnInit {
-	signupForm: ControlGroup;
+	signupForm: FormGroup;
 	submitting = false;
 
 	constructor(private _fb:FormBuilder, private _authService: AuthService) {}
@@ -70,9 +71,9 @@ export class SignupComponent implements OnInit {
 
 
 	// CUSTOM VALIDATORS
-	private mustBeMatching(group: ControlGroup) {
-		var password = group.find('password').value;
-		var confirmPassword = group.find('confirmPassword').value;
+	private mustBeMatching(group: FormControl) {
+		let password = group.find('password').value;
+		let confirmPassword = group.find('confirmPassword').value;
 
 		if (password == '' || confirmPassword == '') {
 			return null;
@@ -84,26 +85,26 @@ export class SignupComponent implements OnInit {
 		return null;
 	}
 
-	private isEmail(control: Control): {[s: string]: boolean} {
-		var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	private isEmail(control: FormControl): {[s: string]: boolean} {
+		let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     
 		if (!control.value.match(regex)) {
 			return { invalidMail: true };
 		}
 	}
 
-	private hasMinComplexity(control: Control) {
-		// const minLength = 6
+	private hasMinComplexity(control: FormControl) {
+		const minLength = 6
 
-		// if (control.value.length < minLength) {
-		// 	return {
-		// 		hasMinComplexity: { notMinLength: minLength }
-		// 	}
-		// } 
+		if (control.value.length < minLength) {
+			return {
+				hasMinComplexity: { message: "Password must have a minimum of 6 Characters" }
+			}
+		} 
 
 		if (control.value.indexOf(' ') >= 0) {
 			return {
-				hasMinComplexity: { noSpaces: true }
+				hasMinComplexity: { message: "Password cannot contain spaces" }
 			}
 		}
 
