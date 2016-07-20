@@ -12,6 +12,7 @@ router.post('/', function (req, res, next) {
 	scrypt.hash(req.body.password, userSalt, function(err, result) {
 		if (err) {
 			return res.status(500).json({
+				code: 500,
 				message: "An error occurred while generating credentials",
 				error: err
 			});
@@ -27,11 +28,13 @@ router.post('/', function (req, res, next) {
 			user.save(function (err, result) {
 				if (err) {
 					return res.status(500).json({
+						code: 500,
 						message: "An error occurred while saving user info",
 						error: err
 					});
 				}
 				res.status(201).json({
+					code: 201,
 					message: "User created",
 					obj: result
 				});

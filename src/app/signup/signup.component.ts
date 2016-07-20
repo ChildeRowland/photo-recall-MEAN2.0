@@ -66,18 +66,18 @@ export class SignupComponent implements OnInit {
 
 				}, err => {
 					console.log(err);
-					//this.serverMessage(err.code);
+					this.serverMessage(err.code);
 					this.submitting = false;
 				});
 	}
 
 	// SERVER MESSAGES
 	private serverMessage(code:number) {
-		if (code == 404) {
-			this.signupForm.find('email').setErrors({ error: { message: "User not found, check email" }});
+		if (code == 500) {
+			this.signupForm.find('name').setErrors({ error: { message: "There was a problem on the server when trying to save." }});
 		}
-		if (code == 401) {
-			this.signupForm.find('password').setErrors({ error: {message: "Incorrect credentials. Check email and Password" }});
+		if (code == 200) {
+			// render success message
 		}
 	}
 

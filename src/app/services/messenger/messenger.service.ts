@@ -19,7 +19,7 @@ export class MessengerService {
 	}
 
 	isInfo(control: FormControl) {
-		if ( control.dirty && control.value.length > 0) {
+		if ( control.dirty && control['message'] ) {
 			return true;
 		}
 	}
