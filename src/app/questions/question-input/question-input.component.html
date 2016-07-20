@@ -14,9 +14,9 @@
 					   class="form-control" 
 					   formControlName="question" />
 
-				<div *ngIf="isError(questionForm.controls.question)">
+				<div *ngIf="messengerService.isError(questionForm.controls.question)">
 					<div class="alert alert-danger">
-						{{ errMessage(questionForm.controls.question).error.message }}
+						{{ messengerService.errMessage(questionForm.controls.question).error.message }}
 					</div>
 				</div>
 			</div>
@@ -33,9 +33,9 @@
 					   class="form-control" 
 					   formControlName="answers" />
 
-				<div *ngIf="isError(questionForm.controls.answers)">
+				<div *ngIf="messengerService.isError(questionForm.controls.answers)">
 					<div class="alert alert-danger">
-						{{ errMessage(questionForm.controls.answers).error.message }}
+						{{ messengerService.errMessage(questionForm.controls.answers).error.message }}
 					</div>
 				</div>
 			</div>
@@ -60,9 +60,9 @@
 					   formControlName="testInput" 
 					   (keyup)="checkAnswers(questionForm.controls.answers, questionForm.controls.testInput)" >
 
-				<div *ngIf="isInfo(questionForm.controls.testInput)">
+				<div *ngIf="messengerService.isInfo(questionForm.controls.testInput)">
 					<div class="alert {{ questionForm.controls.testInput.alert }}">
-						{{ infoMessage(questionForm.controls.testInput).message }}
+						{{ messengerService.infoMessage(questionForm.controls.testInput).message }}
 					</div>
 				</div>
 			</div>

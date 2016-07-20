@@ -11,6 +11,13 @@
 						   class="form-control"
 						   id="name"
 						   formControlName="name">
+
+					<div *ngIf="messengerService.isError(signupForm.controls.name)">
+						<div class="alert alert-danger">
+							{{ messengerService.errMessage(signupForm.controls.name).error.message }}
+						</div>
+					</div>
+
 				</div>
 
 				<div class="form-group">
@@ -19,6 +26,13 @@
 						   class="form-control"
 						   id="email"
 						   formControlName="email">
+
+					<div *ngIf="messengerService.isError(signupForm.controls.email)">
+						<div class="alert alert-danger">
+							{{ messengerService.errMessage(signupForm.controls.email).error.message }}
+						</div>
+					</div>
+
 				</div>
 
 				<div class="form-group">
@@ -27,6 +41,13 @@
 						   class="form-control"
 						   id="password"
 						   formControlName="password">
+
+					<div *ngIf="messengerService.isError(signupForm.controls.password)">
+						<div class="alert alert-danger">
+							{{ messengerService.errMessage(signupForm.controls.password).error.message }}
+						</div>
+					</div>
+
 				</div>
 
 				<div class="form-group">
@@ -35,6 +56,13 @@
 						   class="form-control"
 						   id="confirm-password"
 						   formControlName="confirmPassword">
+
+					<div *ngIf="messengerService.isError(signupForm.controls.confirmPassword)">
+						<div class="alert alert-danger">
+							{{ messengerService.errMessage(signupForm.controls.confirmPassword).error.message }}
+						</div>
+					</div>
+
 				</div>
 			</fieldset>	
 

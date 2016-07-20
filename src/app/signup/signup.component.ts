@@ -3,6 +3,7 @@ import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormControl, FormGroup, Validato
 
 import { User } from '../classes/user/user';
 import { AuthService } from '../auth/auth.service';
+import { MessengerService } from '../services/messenger/messenger.service';
 
 @Component({
 	moduleId: module.id,
@@ -10,21 +11,21 @@ import { AuthService } from '../auth/auth.service';
 	templateUrl: 'signup.component.html',
 	styleUrls: ['signup.component.css'],
 	directives: [ REACTIVE_FORM_DIRECTIVES ],
-	providers: [ AuthService ]
+	providers: [ AuthService, MessengerService ]
 })
 
 export class SignupComponent implements OnInit {
 	signupForm: FormGroup;
 	submitting = false;
 
-	constructor(private _fb:FormBuilder, private _authService: AuthService) {}
+	constructor(public messengerService:MessengerService, private _fb:FormBuilder, private _authService: AuthService) {}
 
 	ngOnInit() {
 		this.signupForm = this._fb.group({
-			name: ['', Validators.compose([ Validators.required ])],
-			email: ['', Validators.compose([ Validators.required, this.isEmail ])],
-			password: ['', Validators.compose([ Validators.required, this.hasMinComplexity ])],
-			confirmPassword: ['',  Validators.compose([ Validators.required ])]
+			name: ['', Validators.compose([ this.messengerService.generalValidators ])],
+			email: ['', Validators.compose([ this.messengerService.isEmail, this.messengerService.generalValidators ])],
+			password: ['', Validators.compose([ this.messengerService.hasMinComplexity, this.messengerService.generalValidators ])],
+			confirmPassword: ['',  Validators.compose([ this.messengerService.generalValidators ])]
 		}, { validator: this.mustBeMatching });
 	}
 
@@ -65,50 +66,35 @@ export class SignupComponent implements OnInit {
 
 				}, err => {
 					console.log(err);
+					//this.serverMessage(err.code);
 					this.submitting = false;
 				});
 	}
 
+	// SERVER MESSAGES
+	private serverMessage(code:number) {
+		if (code == 404) {
+			this.signupForm.find('email').setErrors({ error: { message: "User not found, check email" }});
+		}
+		if (code == 401) {
+			this.signupForm.find('password').setErrors({ error: {message: "Incorrect credentials. Check email and Password" }});
+		}
+	}
+
 
 	// CUSTOM VALIDATORS
-	private mustBeMatching(group: FormControl) {
-		let password = group.find('password').value;
-		let confirmPassword = group.find('confirmPassword').value;
+	private mustBeMatching(form:any) {
+		let password = form.value.password;
+		let confirmPassword = form.value.confirmPassword;
 
 		if (password == '' || confirmPassword == '') {
 			return null;
 		}
 
 		if (password != confirmPassword) {
-			return { mustBeMatching: true };
+			form.find('confirmPassword').setErrors({ error: { message: "Password fields don\'t match" }});
 		}
 		return null;
-	}
-
-	private isEmail(control: FormControl): {[s: string]: boolean} {
-		let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    
-		if (!control.value.match(regex)) {
-			return { invalidMail: true };
-		}
-	}
-
-	private hasMinComplexity(control: FormControl) {
-		const minLength = 6
-
-		if (control.value.length < minLength) {
-			return {
-				hasMinComplexity: { message: "Password must have a minimum of 6 Characters" }
-			}
-		} 
-
-		if (control.value.indexOf(' ') >= 0) {
-			return {
-				hasMinComplexity: { message: "Password cannot contain spaces" }
-			}
-		}
-
-		return null
 	}
 
 }

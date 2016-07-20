@@ -2,23 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Question } from '../../classes/question/question';
+import { MessengerService } from '../../services/messenger/messenger.service';
 
 @Component({
 	moduleId: module.id,
 	selector: 'app-question-input',
 	templateUrl: 'question-input.component.html',
 	styleUrls: ['question-input.component.css'],
-	directives: [ REACTIVE_FORM_DIRECTIVES ]
+	directives: [ REACTIVE_FORM_DIRECTIVES ],
+	providers: [ MessengerService ]
 })
 export class QuestionInputComponent implements OnInit {
 	questionForm: FormGroup;
 
-	constructor(private _fb:FormBuilder) {}
+	constructor(public messengerService:MessengerService, private _fb:FormBuilder) {}
 
 	ngOnInit() {
 		this.questionForm = this._fb.group({
-			question: ['', Validators.compose([ this.questionValidators ])],
-			answers: ['', Validators.compose([ this.questionValidators ])],
+			question: ['', Validators.compose([ this.messengerService.generalValidators ])],
+			answers: ['', Validators.compose([ this.messengerService.generalValidators ])],
 			hint: ['', Validators.compose([])],
 			testInput: ['', Validators.compose([])]
 		})
@@ -26,27 +28,6 @@ export class QuestionInputComponent implements OnInit {
 
 	addQuestion() {
 		console.log(this.questionForm.value);
-	}
-
-	// RENDER MESSAGES
-	isError(control: FormControl) {
-		if ( control.touched && control.errors ) {
-			return true;
-		}
-	}
-
-	errMessage(control: FormControl) {
-		return control.errors;
-	}
-
-	isInfo(control: FormControl) {
-		if ( control.dirty && control.value.length > 0) {
-			return true;
-		}
-	}
-
-	infoMessage(control: FormControl) {
-		return control;
 	}
 
 	// CUSTOM VALIDATORS 
@@ -79,15 +60,6 @@ export class QuestionInputComponent implements OnInit {
 		matchString(testInput.value, answers.value.split(' '), isMatching);
 	}
 
-	private questionValidators(control: FormControl) {
-		var ctrl = control.value;
-
-		if ( ctrl.length <= 0 ) {
-			return { error: { message: "This field is required" } }
-		}
-
-		return null;
-	}
 }
 
 

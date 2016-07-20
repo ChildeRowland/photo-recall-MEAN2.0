@@ -12,9 +12,9 @@
 						   id="email"
 						   formControlName="email" />
 					
-					<div *ngIf="isError(signinForm.controls.email)">
+					<div *ngIf="messengerService.isError(signinForm.controls.email)">
 						<div class="alert alert-danger">
-							{{ errMessage(signinForm.controls.email).error.message }}
+							{{ messengerService.errMessage(signinForm.controls.email).error.message }}
 						</div>
 					</div>
 
@@ -27,9 +27,9 @@
 						   id="password"
 						   formControlName="password" />
 
-					<div *ngIf="isError(signinForm.controls.password)">
+					<div *ngIf="messengerService.isError(signinForm.controls.password)">
 						<div class="alert alert-danger">
-							{{ errMessage(signinForm.controls.password).error.message }}
+							{{ messengerService.errMessage(signinForm.controls.password).error.message }}
 						</div>
 					</div>
 

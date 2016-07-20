@@ -4,6 +4,7 @@ import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormControl, FormGroup, Validato
 
 import { User } from '../classes/user/user';
 import { AuthService } from '../auth/auth.service'
+import { MessengerService } from '../services/messenger/messenger.service'
 
 @Component({
 	moduleId: module.id,
@@ -11,18 +12,22 @@ import { AuthService } from '../auth/auth.service'
 	templateUrl: 'signin.component.html',
 	styleUrls: ['signin.component.css'],
 	directives: [ REACTIVE_FORM_DIRECTIVES ],
-	providers: [ AuthService ]
+	providers: [ AuthService, MessengerService ]
 })
 export class SigninComponent implements OnInit {
 	signinForm: FormGroup;
 	submitting = false;
 
-	constructor(private _fb:FormBuilder, private _authService: AuthService) {}
+	constructor(
+		public messengerService:MessengerService,
+		private _fb:FormBuilder, 
+		private _authService: AuthService
+	) {}
 
 	ngOnInit() {
 		this.signinForm = this._fb.group({
-			email: ['', Validators.compose([ this.questionValidators ])],
-			password: ['', Validators.compose([ this.questionValidators ])]
+			email: ['', Validators.compose([ this.messengerService.generalValidators ])],
+			password: ['', Validators.compose([ this.messengerService.generalValidators ])]
 		})
 	}
 
@@ -44,44 +49,14 @@ export class SigninComponent implements OnInit {
 			}, () => this.submitting = false);
 	}
 
-	serverMessage(code:number) {
+	// SERVER MESSAGES
+	private serverMessage(code:number) {
 		if (code == 404) {
 			this.signinForm.find('email').setErrors({ error: { message: "User not found, check email" }});
 		}
 		if (code == 401) {
 			this.signinForm.find('password').setErrors({ error: {message: "Incorrect credentials. Check email and Password" }});
 		}
-	}
-
-	// RENDER MESSAGES
-	isError(control: FormControl) {
-		if ( control.touched && control.errors ) {
-			return true;
-		}
-	}
-
-	errMessage(control: FormControl) {
-		return control.errors;
-	}
-
-	isInfo(control: FormControl) {
-		if ( control.dirty && control.value.length > 0) {
-			return true;
-		}
-	}
-
-	infoMessage(control: FormControl) {
-		return control;
-	}
-
-	private questionValidators(control: FormControl) {
-		var ctrl = control.value;
-
-		if ( ctrl.length <= 0 ) {
-			return { error: { message: "This field is required" } }
-		}
-
-		return null;
 	}
 
 }
