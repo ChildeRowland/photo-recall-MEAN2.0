@@ -19,6 +19,8 @@ Deploying MEAN2.0 applications with angular-cli
 
 ## July 20, 2016
 
+Finished adding messenger service to the signup component.
+
 --------------------------------
 
 ## July 19
