@@ -15,11 +15,12 @@ Deploying MEAN2.0 applications with angular-cli
 1. ember-cli error
 2. ngbootstrap via system-config
 3. manually adjust the package.json file in the heroku directory for deployment.
-4. New form module... explanations on how to use the module are sparse. 
+
+--------------------------------
 
 ## July 20, 2016
 
-Finished adding messenger service to the signup component.
+Finished adding messenger service to the signup component.  Server errors are render the same as form validation.
 
 --------------------------------
 
