@@ -51,6 +51,7 @@ router.post('/signin', function (req, res, next) {
 
 		if (!doc) {
 			return res.status(404).json({
+				code: 404,
 				message: "User not found",
 				error: { message: "User not found" }
 			});
@@ -86,6 +87,7 @@ router.post('/signin', function (req, res, next) {
 					
 				} else {
 					res.status(401).json({
+						code: 401,
 						message: "Invalid credentials"
 					});
 				}
