@@ -3,6 +3,7 @@ import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormControl, FormGroup, Validato
 
 import { Question } from '../../classes/question/question';
 import { MessengerService } from '../../services/messenger/messenger.service';
+import { QuestionService } from '../question.service';
 
 @Component({
 	moduleId: module.id,
@@ -10,12 +11,16 @@ import { MessengerService } from '../../services/messenger/messenger.service';
 	templateUrl: 'question-input.component.html',
 	styleUrls: ['question-input.component.css'],
 	directives: [ REACTIVE_FORM_DIRECTIVES ],
-	providers: [ MessengerService ]
+	providers: [ MessengerService, QuestionService ]
 })
 export class QuestionInputComponent implements OnInit {
 	questionForm: FormGroup;
 
-	constructor(public messengerService:MessengerService, private _fb:FormBuilder) {}
+	constructor(
+		public messengerService:MessengerService, 
+		private _questionService:QuestionService, 
+		private _fb:FormBuilder
+	) {}
 
 	ngOnInit() {
 		this.questionForm = this._fb.group({
@@ -28,6 +33,7 @@ export class QuestionInputComponent implements OnInit {
 
 	addQuestion() {
 		console.log(this.questionForm.value);
+		this._questionService.postQuestion(this.questionForm.value);
 	}
 
 	// CUSTOM VALIDATORS 

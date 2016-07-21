@@ -1,3 +1,5 @@
-<div>
-	List of Questions
+<div *ngIf="questions">
+	<div *ngFor="let question of questions">
+		<span>{{ question | json }}</span>
+	</div>
 </div>

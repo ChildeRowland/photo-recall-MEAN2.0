@@ -18,9 +18,15 @@ Deploying MEAN2.0 applications with angular-cli
 
 --------------------------------
 
+## July 21
+
+--------------------------------
+
 ## July 20, 2016
 
 Finished adding messenger service to the signup component.  Server errors are render the same as form validation.
+
+Began roughing out the quix component, which holds the image, the question-list component, and the question-input component.
 
 --------------------------------
 

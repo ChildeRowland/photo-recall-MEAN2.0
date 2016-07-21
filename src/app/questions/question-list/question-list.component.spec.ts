@@ -11,10 +11,13 @@ import {
 } from '@angular/core/testing';
 
 import { QuestionListComponent } from './question-list.component';
+import { QuestionService } from '../question.service';
 
 describe('Component: QuestionList', () => {
+	let questionService:QuestionService;
+
   it('should create an instance', () => {
-    let component = new QuestionListComponent();
+    let component = new QuestionListComponent(questionService);
     expect(component).toBeTruthy();
   });
 });
