@@ -1,11 +1,11 @@
 import { provideRouter, RouterConfig } from '@angular/router';
 
 import { FaqComponent } from './faq/faq.component';
-import { QuestionInputComponent } from './questions/question-input/question-input.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 const routes: RouterConfig = [
    	{ path: '', component: FaqComponent },
-  	{ path: 'create', component: QuestionInputComponent }
+  	{ path: 'create', component: QuizComponent }
 ];
 
 export const appRouterProviders = [

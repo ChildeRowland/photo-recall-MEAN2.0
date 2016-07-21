@@ -49,6 +49,8 @@ const barrels: string[] = [
   'app/faq',
   'app/errors/form-errors',
   'app/errors/form-error',
+  'app/quiz/quiz',
+  'app/questions/question-list/question-list',
   /** @cli-barrel */
 ];
 
