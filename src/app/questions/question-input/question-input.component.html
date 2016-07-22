@@ -12,7 +12,8 @@
 				</div>
 				<input type="text" 
 					   class="form-control" 
-					   formControlName="question" />
+					   formControlName="question" 
+					   [(ngModel)]="question.question" />
 
 				<div *ngIf="messengerService.isError(questionForm.controls.question)">
 					<div class="alert alert-danger">
@@ -24,14 +25,15 @@
 			<div class="form-group">
 				<label for="answers">Answers</label>
 				<div>
-					<em>Enter the answers you want to evaulate as true, seperated by a space, ex: lamp light desklamp tasklight etc.</em>
+					<em>Enter the answers you want to evaulate as true, seperated by a comma and space, ex: lamp, light, desklamp, task light etc.</em>
 				</div>
 				<div>
-					<em>If the answer is a phrase, remove the spaces between correct phrases, ex: underthetable undertable beneathtable etc.</em>
+					<em>You can use phrases, but you may want to try using different variations, ex: under the table, under table, beneath table, etc.</em>
 				</div>
 				<input type="text" 
 					   class="form-control" 
-					   formControlName="answers" />
+					   formControlName="answers"
+					   [(ngModel)]="question.answers" />
 
 				<div *ngIf="messengerService.isError(questionForm.controls.answers)">
 					<div class="alert alert-danger">
@@ -47,7 +49,8 @@
 				</div>
 				<input type="text" 
 					   class="form-control" 
-					   formControlName="hint" />
+					   formControlName="hint"
+					   [(ngModel)]="question.hint" />
 			</div>
 
 			<div class="form-group">

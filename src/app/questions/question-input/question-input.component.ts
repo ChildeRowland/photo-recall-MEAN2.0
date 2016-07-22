@@ -14,7 +14,11 @@ import { QuestionService } from '../question.service';
 	providers: [ MessengerService ]
 })
 export class QuestionInputComponent implements OnInit {
-	questions:any[];
+	editable = false;
+
+	index: number;
+	question: Question;
+	questions: any[];
 	questionForm: FormGroup;
 
 	constructor(
@@ -24,6 +28,10 @@ export class QuestionInputComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
+		this.question = new Question('', '', '', null);
+
+		this.questions = this._questionService.getQuestions();
+
 		this.questionForm = this._fb.group({
 			question: ['', Validators.compose([ this.messengerService.generalValidators ])],
 			answers: ['', Validators.compose([ this.messengerService.generalValidators ])],
@@ -31,15 +39,29 @@ export class QuestionInputComponent implements OnInit {
 			testInput: ['', Validators.compose([])]
 		});
 
-		this.questions = this._questionService.getQuestions();
+		this._questionService.questionIsEditable
+			.subscribe(data => {
+				this.question = data.qstn;
+				this.index = data.idx;
+				this.editable = true;
+			});
+
 	}
 
 	addQuestion() {
 		let form = this.questionForm.value;
 		const qstn = new Question( form.question, form.answers, form.hint, null );
+		const index = this.index;
 
-		console.log(qstn);
-		this._questionService.addQuestion(qstn);
+		if (this.editable) {
+			// update the entry
+			this._questionService.updateQuestion(qstn, index);
+			this.editable = false;
+			this.question = new Question('', '', '', null); // temp solution to clear form
+		} else {
+			this._questionService.addQuestion(qstn);
+			this.question = new Question('', '', '', null); // temp solution to clear form
+		}
 	}
 
 	// CUSTOM VALIDATORS 
@@ -69,7 +91,7 @@ export class QuestionInputComponent implements OnInit {
 			}
 		}
 
-		matchString(testInput.value, answers.value.split(' '), isMatching);
+		matchString(testInput.value, answers.value.split(', '), isMatching);
 	}
 
 }

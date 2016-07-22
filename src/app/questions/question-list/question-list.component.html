@@ -2,7 +2,12 @@
 	Saved questions
 </h3>
 <div *ngIf="questions">
-	<div *ngFor="let entry of questions">
-		Q:{{ entry.question }} - A:{{ entry.answers }}
-	</div>
+	<ul *ngFor="let question of questions; let i=index">
+		<li class="list-group-item">
+			<app-question [question]="question" 
+						  [i]="i" 
+						  (editClick)="editClick(question, i, $event)">
+			</app-question>
+		</li>	
+	</ul>
 </div>

@@ -1,0 +1,16 @@
+<div class="media" *ngIf="question">
+	<div class="media-left">
+		{{ i + 1 }}
+	</div>
+	<div class="media-body">
+		<h4 class="media-heading">{{ question.question }}</h4>
+		<p *ngIf="question.hint">
+			<em>hint: {{ question.hint }}</em>
+		</p>
+		<p>possible answers: {{ question.answers }}</p>
+	</div>
+	<div class="media-right">
+		<button class="btn btn-danger" (click)="onDelete()">delete Q</button>
+		<button class="btn btn-warning" (click)="onEdit()">Edit Q</button>
+	</div>
+</div>

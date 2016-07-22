@@ -18,7 +18,15 @@ Deploying MEAN2.0 applications with angular-cli
 
 --------------------------------
 
+## July 22
+
+Question Service can serve an array of questions, add, update, and delete.  When a user choses to edit a question, the service provides an EventEmitter, and passes the object to the Question Input Component to use the same form for new entries.
+
+--------------------------------
+
 ## July 21
+
+Tried multiply inheritance strategies for the Question Service, to keep it versatile.  Decided to uses the providers property in the quiz component, and try to use the quiz component to house creating and updating games, as well as serving them to be played.
 
 --------------------------------
 
