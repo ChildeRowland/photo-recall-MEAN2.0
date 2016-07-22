@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 import { QuestionService } from '../question.service';
 
@@ -10,12 +10,9 @@ import { QuestionService } from '../question.service';
 	providers: [ QuestionService ]
 })
 export class QuestionListComponent implements OnInit {
-	questions:any[];
 
-	constructor(private _questionService:QuestionService) {}
+	constructor(public _questionService:QuestionService) {}
 
-	ngOnInit() {
-		this.questions = this._questionService.getQuestions();
-	}
+	ngOnInit() {}
 
 }

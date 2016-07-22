@@ -73,3 +73,9 @@
 		</button>
 	</form>
 </section>
+<div *ngIf="questions">
+	<div *ngFor="let entry of questions">
+		{{ entry.question }}<br />
+		{{ entry.answers }}
+	</div>
+</div>

@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter, Output } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
 
 @Injectable()
 
@@ -14,11 +16,7 @@ export class QuestionService {
 	constructor() {}
 
 	getQuestions() {
-		return this.questions
-	}
-
-	postQuestion(question) {
-		this.questions.push(question);
+		return this.questions;
 	}
 
 }

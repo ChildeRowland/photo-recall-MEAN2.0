@@ -14,6 +14,7 @@ import { QuestionService } from '../question.service';
 	providers: [ MessengerService, QuestionService ]
 })
 export class QuestionInputComponent implements OnInit {
+	questions:any[];
 	questionForm: FormGroup;
 
 	constructor(
@@ -28,12 +29,17 @@ export class QuestionInputComponent implements OnInit {
 			answers: ['', Validators.compose([ this.messengerService.generalValidators ])],
 			hint: ['', Validators.compose([])],
 			testInput: ['', Validators.compose([])]
-		})
+		});
+
+		this.questions = this._questionService.getQuestions();
 	}
 
 	addQuestion() {
-		console.log(this.questionForm.value);
-		this._questionService.postQuestion(this.questionForm.value);
+		let form = this.questionForm.value;
+		const qstn = new Question( form.question, form.answers, form.hint, null );
+
+		console.log(qstn);
+		this.questions.push(qstn);
 	}
 
 	// CUSTOM VALIDATORS 
