@@ -1,1 +1,8 @@
-
+<h3>
+	Saved questions
+</h3>
+<div *ngIf="questions">
+	<div *ngFor="let entry of questions">
+		Q:{{ entry.question }} - A:{{ entry.answers }}
+	</div>
+</div>

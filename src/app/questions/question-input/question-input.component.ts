@@ -11,7 +11,7 @@ import { QuestionService } from '../question.service';
 	templateUrl: 'question-input.component.html',
 	styleUrls: ['question-input.component.css'],
 	directives: [ REACTIVE_FORM_DIRECTIVES ],
-	providers: [ MessengerService, QuestionService ]
+	providers: [ MessengerService ]
 })
 export class QuestionInputComponent implements OnInit {
 	questions:any[];
@@ -39,7 +39,7 @@ export class QuestionInputComponent implements OnInit {
 		const qstn = new Question( form.question, form.answers, form.hint, null );
 
 		console.log(qstn);
-		this.questions.push(qstn);
+		this._questionService.addQuestion(qstn);
 	}
 
 	// CUSTOM VALIDATORS 

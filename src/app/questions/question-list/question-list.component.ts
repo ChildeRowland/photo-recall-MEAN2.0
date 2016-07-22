@@ -7,12 +7,15 @@ import { QuestionService } from '../question.service';
 	selector: 'app-question-list',
 	templateUrl: 'question-list.component.html',
 	styleUrls: ['question-list.component.css'],
-	providers: [ QuestionService ]
 })
 export class QuestionListComponent implements OnInit {
+	questions:any[];
 
 	constructor(public _questionService:QuestionService) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.questions = this._questionService.getQuestions();
+		console.log(this.questions);
+	}
 
 }
