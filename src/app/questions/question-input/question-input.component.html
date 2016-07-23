@@ -1,8 +1,8 @@
 <section>
 	<form [formGroup]="questionForm" (ngSubmit)="addQuestion()">
 		<fieldset>
-			<legend>
-				New Question
+			<legend id="question-title">
+				{{ editable ? 'Edit ' : 'New ' }}Question
 			</legend>
 
 			<div class="form-group">
@@ -11,7 +11,7 @@
 					<em>Ask one question about the photograph.</em>
 				</div>
 				<input type="text" 
-					   class="form-control" 
+					   class="form-control"
 					   formControlName="question" 
 					   [(ngModel)]="question.question" />
 
@@ -72,8 +72,9 @@
 		</fieldset>
 
 		<button class="btn btn-primary" type="submit" [disabled]="!questionForm.valid">
-			Add Question
+			{{ editable ? 'update' : 'add' }}
 		</button>
+		<button class="btn btn-danger" *ngIf="editable" (click)="onCancel()">cancel</button>
 	</form>
 </section>
 

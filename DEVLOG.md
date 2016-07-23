@@ -22,6 +22,10 @@ Deploying MEAN2.0 applications with angular-cli
 
 Question Service can serve an array of questions, add, update, and delete.  When a user choses to edit a question, the service provides an EventEmitter, and passes the object to the Question Input Component to use the same form for new entries.
 
+Because there is no Angular2 set-to-pristine method, the question form values are set to empty strings after submit.
+
+Also using scrollIntoView() after button clicks. Not sure if there is an Angular way to do this.
+
 --------------------------------
 
 ## July 21

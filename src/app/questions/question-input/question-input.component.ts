@@ -41,11 +41,12 @@ export class QuestionInputComponent implements OnInit {
 
 		this._questionService.questionIsEditable
 			.subscribe(data => {
-				this.question = data.qstn;
+				this.question.question = data.qstn.question;
+				this.question.answers = data.qstn.answers;
+				this.question.hint = data.qstn.hint;
 				this.index = data.idx;
 				this.editable = true;
 			});
-
 	}
 
 	addQuestion() {
@@ -62,7 +63,18 @@ export class QuestionInputComponent implements OnInit {
 			this._questionService.addQuestion(qstn);
 			this.question = new Question('', '', '', null); // temp solution to clear form
 		}
+		
+		// temp solution for lack of Angular2 abchor links
+		document.getElementById("question-title").scrollIntoView();
 	}
+
+	onCancel() {
+		this.question = new Question('', '', '', null);
+		this.editable = false;
+		// temp solution for lack of Angular2 abchor links
+		document.getElementById("question-title").scrollIntoView();
+	}
+
 
 	// CUSTOM VALIDATORS 
 	private checkAnswers(answers, testInput) {

@@ -18,9 +18,10 @@ export class QuestionComponent implements OnInit {
 
 	ngOnInit() {}
 
-	// from the QuestionListComponent
 	onEdit() {
 		this._questionService.editQuestion(this.question, this.i);
+		// temp solution for lack of Angular2 abchor links
+		document.getElementById("question-title").scrollIntoView();
 	}
 
 	onDelete() {
