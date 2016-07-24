@@ -10,8 +10,9 @@ import { QuestionService } from '../question.service';
 	styleUrls: ['question.component.css']
 })
 export class QuestionComponent implements OnInit {
-	@Input() question:Question;
-	@Input() i:number;
+	@Input() question: Question;
+	@Input() i: number;
+	@Input() game: boolean = true;
 	@Output() editClick = new EventEmitter<string>();
 
 	constructor(private _questionService: QuestionService) {}

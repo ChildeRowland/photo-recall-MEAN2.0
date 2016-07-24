@@ -1,0 +1,24 @@
+/* Translucent div, for blocking interaction with element */
+.whitewash {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.95;
+	z-index: 99;
+}
+
+.container-image {
+	position: relative;
+}
+
+.jumbotron {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+p {
+	color: white;
+}

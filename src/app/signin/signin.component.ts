@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -14,6 +14,7 @@ import { MessengerService } from '../services/messenger/messenger.service'
 	directives: [ REACTIVE_FORM_DIRECTIVES ],
 	providers: [ AuthService, MessengerService ]
 })
+
 export class SigninComponent implements OnInit {
 	signinForm: FormGroup;
 	submitting = false;

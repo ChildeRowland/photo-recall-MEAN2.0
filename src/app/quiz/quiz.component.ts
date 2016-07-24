@@ -15,9 +15,12 @@ import { ImageComponent } from '../image/image.component';
 })
 
 export class QuizComponent implements OnInit {
+	imageVisible: boolean;
 
 	constructor() {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.imageVisible = true;
+	}
 
 }

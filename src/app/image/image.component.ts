@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
 	moduleId: module.id,
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['image.component.css']
 })
 export class ImageComponent implements OnInit {
+	@Input() imageVisible: boolean;
 
 	constructor() {}
 
 	ngOnInit() {}
+
+	startGame() {
+		let self = this;
+
+		this.imageVisible = true;
+
+		setTimeout(function() {
+			self.imageVisible = false;
+		}, 10000);
+	}
 
 }

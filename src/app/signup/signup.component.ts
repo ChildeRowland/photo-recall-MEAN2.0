@@ -51,7 +51,8 @@ export class SignupComponent implements OnInit {
 			.subscribe(
 				// remove for production
 				data => {
-					console.log(data.name);
+					// loggin undefined
+					console.log(data);
 					// sign the user in
 					
 					this._authService.signin(user)

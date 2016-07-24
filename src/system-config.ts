@@ -53,6 +53,7 @@ const barrels: string[] = [
   'app/questions/question-list/question-list',
   'app/questions/question',
   'app/image',
+  'app/game',
   /** @cli-barrel */
 ];
 

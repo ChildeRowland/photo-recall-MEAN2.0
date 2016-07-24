@@ -1,8 +1,19 @@
 <div class="jumbotron">
-	<div class="container">
-		<div>
-			<h4>Image uploaded by game master</h4>
-			<img class="img-responsive" src="/assets/img/trivia_winners_ex.jpg" alt="trivia winners">
+	<div class="container container-image">
+		<div class="whitewash" *ngIf="!imageVisible">
+			<div>
+				<p>Study the image for 10 seconds...</p>
+				<button class="btn btn-info" (click)="startGame()">got it</button>
+			</div>
+			<div>
+				<p>Now answer some questions.</p>
+				<p>There is no time limit on questions</p>
+				<p>You have to answer something each time to progress</p>
+				<button class="btn btn-info">okie dokie</button>
+			</div>
 		</div>
+
+		<h4>Image uploaded by game master</h4>
+		<img class="img-responsive" src="/assets/img/trivia_winners_ex.jpg" alt="trivia winners">
 	</div>
 </div>
