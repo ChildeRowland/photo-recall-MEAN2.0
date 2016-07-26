@@ -20,6 +20,7 @@ export class GameComponent implements OnInit {
 	questions: any[];
 	question: Question;
 	imageVisible: boolean;
+	score: number;
 
 	constructor(private _questionService: QuestionService) {}
 
@@ -27,8 +28,21 @@ export class GameComponent implements OnInit {
 		this.imageVisible = false;
 		this.game = true;
 		this.questions = this._questionService.getQuestions();
-		this.i = this.questions.length - 1;
-		this.question = this.questions[0];
+		this.i = 0;
+		this.question = this.questions[this.i];
+		this.score = 0;
+
+		this._questionService.addToScore.subscribe(num => {
+			console.log(num);
+			this.score += num;
+
+			if ( this.i < this.questions.length - 1 ) {
+				this.i ++;
+				this.question = this.questions[this.i];
+			}
+		});
 	}
+
+
 
 }

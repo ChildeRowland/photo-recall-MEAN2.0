@@ -8,6 +8,8 @@ import { Question } from '../classes/question/question';
 
 export class QuestionService {
 	questionIsEditable = new EventEmitter<Object>();
+	// move to user service
+	addToScore = new EventEmitter<number>();
 
 	questions:any[] = [
 		{
@@ -53,6 +55,11 @@ export class QuestionService {
 
 	deleteQuestion(index) {
 		this.questions.splice(index, 1);
+	}
+
+	//SCORE CARD
+	updateScore(number) {
+		this.addToScore.emit(number);
 	}
 
 }

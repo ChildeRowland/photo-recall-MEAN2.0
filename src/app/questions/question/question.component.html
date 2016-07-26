@@ -1,24 +1,35 @@
 <!-- toggle elements with game boolean -->
-<div class="media" *ngIf="question">
-	<div class="media-left">
-		{{ i + 1 }}
-	</div>
+<div class="row">
+	<div class="col-md-8">
+		<div class="media" *ngIf="question">
+			<div class="media-left">
+				{{ i + 1 }}
+			</div>
 
-	<div class="media-body">
-		<h4 class="media-heading">{{ question.question }}</h4>
-		<p *ngIf="question.hint">
-			<em>hint: {{ question.hint }}</em>
-		</p>
-		<p *ngIf="!game">possible answers: {{ question.answers }}</p>
+			<div class="media-body">
+				<h4 class="media-heading">{{ question.question }}</h4>
+				<p *ngIf="question.hint">
+					<em>hint: {{ question.hint }}</em>
+				</p>
+				<p *ngIf="!game">possible answers: {{ question.answers }}</p>
 
-		<input type="text"
-			   class="form-control"
-			   *ngIf="game">
-	</div>
+				<div class="col-md-8">
+					<input type="text"
+				   		   class="form-control"
+				   		   *ngIf="game"
+				   		   [(ngModel)]="userAnswer">	
+				</div>
+			</div>
+			
+			<div class="media-right">
+				{{ answerResponse }}
+			</div>
 
-	<div class="media-right">
-		<button class="btn btn-danger" (click)="onDelete()" *ngIf="!game">delete Q</button>
-		<button class="btn btn-warning" (click)="onEdit()" *ngIf="!game">Edit Q</button>
-		<button class="btn btn-info" *ngIf="game">submit</button>
+			<div class="media-right">
+				<button class="btn btn-danger" (click)="onDelete()" *ngIf="!game">delete Q</button>
+				<button class="btn btn-warning" (click)="onEdit()" *ngIf="!game">Edit Q</button>
+				<button class="btn btn-info" (click)="checkAnswer()" *ngIf="game">submit</button>
+			</div>
+		</div>
 	</div>
 </div>

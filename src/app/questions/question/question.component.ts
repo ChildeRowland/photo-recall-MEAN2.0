@@ -10,10 +10,14 @@ import { QuestionService } from '../question.service';
 	styleUrls: ['question.component.css']
 })
 export class QuestionComponent implements OnInit {
+	answerResponse: string;
+
 	@Input() question: Question;
 	@Input() i: number;
 	@Input() game: boolean = true;
-	@Output() editClick = new EventEmitter<string>();
+	// @Output() editClick = new EventEmitter<string>();
+
+	userAnswer: string;
 
 	constructor(private _questionService: QuestionService) {}
 
@@ -28,5 +32,36 @@ export class QuestionComponent implements OnInit {
 	onDelete() {
 		this._questionService.deleteQuestion(this.i);
 	}
+
+	checkAnswer() {
+		let correctAnswers = this.question.answers.split(', ');
+
+		for (var i = correctAnswers.length - 1; i >= 0; i--) {
+			if (this.userAnswer == correctAnswers[i]) {
+
+				return this.nextQuestion(1, "Correct!")
+			}	
+		}
+		return this.nextQuestion(0, "InCorrect!");
+	}
+
+	nextQuestion(score, response) {
+		let self = this;
+
+		this.answerResponse = response;
+		this.userAnswer = "";
+
+		setTimeout(function() {
+			self._questionService.updateScore(score);
+			self.answerResponse = ""
+		}, 2000);
+
+	}
+
+	//  render correct / incorrect
+	// timout 3 seconds
+	// clear form
+	//  update total score
+	// next question
 
 }
