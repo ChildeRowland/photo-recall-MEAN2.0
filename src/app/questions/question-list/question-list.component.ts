@@ -13,11 +13,13 @@ import { QuestionComponent } from '../question/question.component';
 export class QuestionListComponent implements OnInit {
 	questions:any[];
 	game: boolean;
+	questionVisible: boolean;
 
 	constructor(public _questionService:QuestionService) {}
 
 	ngOnInit() {
 		this.game = false;
+		this.questionVisible = true;
 
 		this.questions = this._questionService.getQuestions();
 	}

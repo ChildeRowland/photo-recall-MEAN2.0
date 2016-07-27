@@ -1,4 +1,4 @@
-<!-- toggle elements with game boolean -->
+<!-- toggle elements with game / !game boolean -->
 <div class="row" *ngIf="questionVisible">
 	<div class="col-md-8">
 		<div class="media" *ngIf="question">
@@ -21,18 +21,26 @@
 				</div>
 			</div>
 			
-			<div class="media-right">
+			<div class="media-right" *ngIf="game">
 				{{ answerResponse }}
 			</div>
 
-			<div class="media-right">
-				<button class="btn btn-danger" (click)="onDelete()" *ngIf="!game">delete Q</button>
-				<button class="btn btn-warning" (click)="onEdit()" *ngIf="!game">Edit Q</button>
+			<div class="media-right" *ngIf="!game">
+				<button class="btn btn-warning" (click)="onEdit()">Edit Q</button>
+			</div>
+
+			<div class="media-right" *ngIf="!game">
+				<button class="btn btn-danger" (click)="onDelete()">delete Q</button>
+			</div>
+
+			<div class="media-right" *ngIf="game">
 				<button class="btn btn-info" 
 						(click)="checkAnswer()"
-						[disabled]="answerResponse" 
-						*ngIf="game">submit</button>
+						[disabled]="answerResponse">
+					submit
+				</button>
 			</div>
+			
 		</div>
 	</div>
 </div>

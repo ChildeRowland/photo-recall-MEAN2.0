@@ -15,8 +15,8 @@ export class QuestionComponent implements OnInit {
 	@Input() question: Question;
 	@Input() i: number;
 	@Input() game: boolean = true;
-	@Input() questionVisible: boolean;
-	// @Output() editClick = new EventEmitter<string>();
+	@Input() questionVisible: boolean = true;
+	@Output() editClick = new EventEmitter<string>();
 
 	userAnswer: string;
 
