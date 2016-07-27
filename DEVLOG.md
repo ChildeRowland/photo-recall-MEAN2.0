@@ -16,6 +16,10 @@ Deploying MEAN2.0 applications with angular-cli
 2. ngbootstrap via system-config
 3. manually adjust the package.json file in the heroku directory for deployment.
 
+## July 26
+
+Roughed out the basic game session.  The components are grouped together in the Game Component, but it requires a few Event Emitters to load in different components.
+
 --------------------------------
 
 ## July 23
