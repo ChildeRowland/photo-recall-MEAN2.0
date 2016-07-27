@@ -15,6 +15,7 @@ export class QuestionComponent implements OnInit {
 	@Input() question: Question;
 	@Input() i: number;
 	@Input() game: boolean = true;
+	@Input() questionVisible: boolean;
 	// @Output() editClick = new EventEmitter<string>();
 
 	userAnswer: string;
@@ -42,7 +43,7 @@ export class QuestionComponent implements OnInit {
 				return this.nextQuestion(1, "Correct!")
 			}	
 		}
-		return this.nextQuestion(0, "InCorrect!");
+		return this.nextQuestion(0, "Incorrect!");
 	}
 
 	nextQuestion(score, response) {
@@ -57,11 +58,5 @@ export class QuestionComponent implements OnInit {
 		}, 2000);
 
 	}
-
-	//  render correct / incorrect
-	// timout 3 seconds
-	// clear form
-	//  update total score
-	// next question
 
 }

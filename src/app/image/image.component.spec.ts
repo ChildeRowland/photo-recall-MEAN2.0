@@ -11,10 +11,13 @@ import {
 } from '@angular/core/testing';
 
 import { ImageComponent } from './image.component';
+import { QuestionService } from '../questions/question.service';
 
 describe('Component: Image', () => {
+	let questionService: QuestionService;
+
   it('should create an instance', () => {
-    let component = new ImageComponent();
+    let component = new ImageComponent(questionService);
     expect(component).toBeTruthy();
   });
 });

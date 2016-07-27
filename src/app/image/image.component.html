@@ -1,15 +1,15 @@
 <div class="jumbotron">
 	<div class="container container-image">
 		<div class="whitewash" *ngIf="!imageVisible">
-			<div style="margin:auto;width:50%;text-align:center;padding:70px 0;">
+			<div class="text-block" *ngIf="instructionsImage">
 				<p>Study the image for 10 seconds...</p>
-				<button class="btn btn-info" style="margin:auto;" (click)="startGame()">got it</button>
+				<button class="btn btn-info" (click)="showImage()">Ok, Ready</button>
 			</div>
-			<div>
-				<p>Now answer some questions.</p>
-				<p>There is no time limit on questions</p>
-				<p>You have to answer something each time to progress</p>
-				<button class="btn btn-info">okie dokie</button>
+			<div class="text-block" *ngIf="instructionsQuestion">
+				<p>Now, answer some questions.</p>
+				<p>There is no time limit.</p>
+				<p>You have to answer each question to progress.</p>
+				<button class="btn btn-info" (click)="startGame()">Right-O</button>
 			</div>
 		</div>
 

@@ -19,12 +19,16 @@ export class GameComponent implements OnInit {
 	game: boolean;
 	questions: any[];
 	question: Question;
+	questionVisible: boolean;
 	imageVisible: boolean;
 	score: number;
+	// move to summary component 
+	summary: string;
 
 	constructor(private _questionService: QuestionService) {}
 
 	ngOnInit() {
+		this.questionVisible = false;
 		this.imageVisible = false;
 		this.game = true;
 		this.questions = this._questionService.getQuestions();
@@ -32,17 +36,30 @@ export class GameComponent implements OnInit {
 		this.question = this.questions[this.i];
 		this.score = 0;
 
+		// check the user's score
 		this._questionService.addToScore.subscribe(num => {
-			console.log(num);
 			this.score += num;
 
-			if ( this.i < this.questions.length - 1 ) {
+			if ( this.i < this.questions.length ) {
 				this.i ++;
 				this.question = this.questions[this.i];
 			}
+
+			if ( this.i == this.questions.length ) {
+				this.questionVisible = false;
+				this.imageVisible = true;
+				this.summary = `You got ${this.score} out of ${this.questions.length}`;
+			}
+
+		});
+
+		// check if user is read for questions
+		this._questionService.readyForGame.subscribe(bool => {
+			if ( bool ) {
+				this.questionVisible = bool;
+				document.getElementById("title").scrollIntoView();
+			}
 		});
 	}
-
-
 
 }

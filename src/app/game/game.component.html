@@ -1,9 +1,12 @@
 
-<app-image [imageVisible]="imageVisible"></app-image>
-
 <app-question [question]="question"
 			  [i]="i"
-			  [game]="game">
+			  [game]="game"
+			  [questionVisible]="questionVisible">
 </app-question>
 
-{{ score }}
+<div *ngIf="summary">
+	Summary: {{ summary }}
+</div>
+
+<app-image [imageVisible]="imageVisible"></app-image>

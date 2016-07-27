@@ -10,6 +10,8 @@ export class QuestionService {
 	questionIsEditable = new EventEmitter<Object>();
 	// move to user service
 	addToScore = new EventEmitter<number>();
+	// some other service location, game?
+	readyForGame = new EventEmitter<boolean>();
 
 	questions:any[] = [
 		{

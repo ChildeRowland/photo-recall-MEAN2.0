@@ -19,6 +19,11 @@
 	padding-right: 0;
 }
 
-p {
+.text-block { 
+	margin: auto;
+	padding: 100px 0;
+	width: 50%;
+	text-align: center;
 	color: white;
 }
+
