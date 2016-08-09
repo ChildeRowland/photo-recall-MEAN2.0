@@ -8,6 +8,7 @@ var cookieParser 	= 	require('cookie-parser');
 var bodyParser 		= 	require('body-parser');
 
 var uploadRoutes = require('./server/routes/upload');
+var quizRoutes = require('./server/routes/quiz');
 var userRoutes = require('./server/routes/user');
 var appRoutes = require('./server/routes/app');
 
@@ -36,6 +37,7 @@ app.use(function(req, res, next) {
 // });
 
 app.use('/upload', uploadRoutes);
+app.use('/quiz', quizRoutes);
 app.use('/user', userRoutes);
 app.use('/', appRoutes);
 

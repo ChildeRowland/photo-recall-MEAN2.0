@@ -18,7 +18,8 @@ Deploying MEAN2.0 applications with angular-cli
 
 ## August 9
 
-
+Mongoose Quiz and child Question models.
+Quiz routes: post
 
 --------------------------------
 
