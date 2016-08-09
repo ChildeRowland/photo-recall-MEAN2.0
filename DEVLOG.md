@@ -16,6 +16,12 @@ Deploying MEAN2.0 applications with angular-cli
 2. ngbootstrap via system-config
 3. manually adjust the package.json file in the heroku directory for deployment.
 
+## August 9
+
+
+
+--------------------------------
+
 ## August 8
 
 Test user model for required and unique emails.
