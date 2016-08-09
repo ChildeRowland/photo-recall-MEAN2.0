@@ -13,7 +13,7 @@
   "angular-cli": {},
   "scripts": {
     "start": "node app.js",
-    "mocha": "mocha server-test/server-test.js",
+    "mocha": "mocha server-test --recursive",
     "startAngular": "ng serve",
     "postinstall": "typings install",
     "lint": "tslint \"src/**/*.ts\"",
