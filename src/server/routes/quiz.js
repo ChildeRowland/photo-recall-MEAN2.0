@@ -3,9 +3,10 @@
 var express = require('express');
 var router = express.Router();
 
+var User = require('../models/user');
 var Quiz = require('../models/quiz');
 
-// GET ALL THE QUIZZES OF THE USER
+// GET ALL THE QUIZZES
 router.get('/', function (req, res, next) {
 	Quiz.find(function (err, result) {
 		if (err) {
@@ -49,22 +50,40 @@ router.get('/:id', function (req, res, next) {
 
 // ADD A QUIZ
 router.post('/', function (req, res, next) {
-	var quiz = new Quiz({
-		image: req.body.image
-	});
-
-	quiz.save(function (err, result) {
+	User.findById("57aa8ef976dd6cb1056e500a", function (err, doc) {
 		if (err) {
 			return res.status(500).json({
 				code: 500,
-				message: "An error occurred while saving quiz info",
+				message: "An error occurred while getting the user",
 				error: err
 			});
 		}
-		res.status(201).json({
-			code: 201,
-			message: "Quiz created",
-			obj: result
+
+		if (!doc) {
+			return res.status(404).json({
+				code: 404,
+				message: "Could not find the user by id"
+			});
+		}
+
+		var quiz = new Quiz({
+			image: req.body.image,
+			user: doc
+		});
+
+		quiz.save(function (err, result) {
+			if (err) {
+				return res.status(500).json({
+					code: 500,
+					message: "An error occurred while saving quiz info",
+					error: err
+				});
+			}
+			res.status(201).json({
+				code: 201,
+				message: "Quiz created",
+				obj: result
+			});
 		});
 	});
 });
@@ -113,12 +132,31 @@ router.post('/:id/question', function (req, res, next) {
 	});
 });
 
-module.exports = router;
+// Get the Quizzes created by the User
+// Move to user route
 
-// var questionSchema = new Schema({
-// 	question: { type: String, required: true },
-// 	answers: { type: String, required: true },
-// 	hint: { type: String, required: true },
-// 	order: { type: String }
+// router.get('/userquizzes', function (req, res, next) {
+// 	User.findById("57aa8ef976dd6cb1056e500a", function (err, doc) {
+// 		if (err) {
+// 			return res.status(500).json({
+// 				code: 500,
+// 				message: "An error occurred while getting the user",
+// 				error: err
+// 			});
+// 		}
+// 	}).populate('quizzes').exec(function(err, docs) {
+// 		if (err) {
+// 			return res.status(500).json({
+// 				message: 'An error occured',
+// 				error: err
+// 			});
+// 		}
+// 		res.status(200).json({
+// 			message: 'Success',
+// 			obj: docs
+// 		});
+// 	});
 // });
+
+module.exports = router;
 

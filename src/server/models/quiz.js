@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var User = require('./user');
 var mongooseUniqueValidator = require('mongoose-unique-validator');
 
 var questionSchema = new Schema({
@@ -12,6 +13,7 @@ var questionSchema = new Schema({
 });
 
 var quizSchema = new Schema({
+	user: { type: Schema.Types.ObjectId, ref: 'User' },
 	image: { type: String, unique: true, required: true },
 	questions: [questionSchema]
 });

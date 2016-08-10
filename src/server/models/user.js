@@ -10,7 +10,8 @@ var userSchema = new Schema({
 	email: { type: String, unique: true, required: true },	
 	password: { type: String, required: true },
 	salt: { type: String, required: true },
-	state: { type: String, enum: [ 'basic', 'super', 'admin' ], default: 'basic' }
+	state: { type: String, enum: [ 'basic', 'super', 'admin' ], default: 'basic' },
+	quizzes: [{ type: Schema.Types.ObjectId, ref: 'Quiz' }]
 });
 
 userSchema.plugin(mongooseUniqueValidator);

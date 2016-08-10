@@ -20,6 +20,7 @@ Deploying MEAN2.0 applications with angular-cli
 
 Mongoose Quiz and child Question models.
 Quiz routes: POST new quiz, GET all quizzes, GET single quiz, POST questions to quiz.
+Began hooking up the Quizzes to a User via ref.
 
 --------------------------------
 
