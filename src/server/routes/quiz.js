@@ -66,9 +66,9 @@ router.post('/', function (req, res, next) {
 			});
 		}
 
+		var user = doc;
 		var quiz = new Quiz({
 			image: req.body.image,
-			user: doc
 		});
 
 		quiz.save(function (err, result) {
@@ -83,6 +83,21 @@ router.post('/', function (req, res, next) {
 				code: 201,
 				message: "Quiz created",
 				obj: result
+			});
+
+			user.push(result);
+			user.save(function (err, result) {
+				if (err) {
+					return res.status(500).json({
+						code: 500,
+						message: "An error occurred while assigning the quiz to the user",
+						error: err
+					});
+				}
+				res.status(200).json({
+					code: 200,
+					message: "Quiz assigned to User",
+				});
 			});
 		});
 	});
