@@ -6,6 +6,7 @@ var jwt = require('jsonwebtoken');
 var config = require('../config').security;
 var User = require('../models/user');
 
+// NEW USER
 router.post('/', function (req, res, next) {
 	var userSalt = config.addSalt();
 	
@@ -43,6 +44,7 @@ router.post('/', function (req, res, next) {
 	});
 });
 
+// SIGNIN USER
 router.post('/signin', function (req, res, next) {
 	User.findOne({ email: req.body.email }, function (err, doc) {
 		if (err) {
@@ -96,6 +98,33 @@ router.post('/signin', function (req, res, next) {
 				}
 			});
 		}
+	});
+});
+
+// GET THE CURRENT USER QUIZZES
+router.get('/:id/quizzes', function (req, res, next) {
+	var userId = req.params.id;
+
+	User.findById(userId, function (err, doc) {
+		if (err) {
+			return res.status(500).json({
+				code: 500,
+				message: "An error occurred while getting the user",
+				error: err
+			});
+		}
+	// Use populate funtion to send the quizzes array with complete objects
+	}).populate('quizzes').exec(function(err, doc) {
+		if (err) {
+			return res.status(500).json({
+				message: 'An error occured',
+				error: err
+			});
+		}
+		res.status(200).json({
+			message: 'Successfully got User and Quizzes',
+			obj: doc
+		});
 	});
 });
 

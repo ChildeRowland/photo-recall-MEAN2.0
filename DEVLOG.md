@@ -16,6 +16,16 @@ Deploying MEAN2.0 applications with angular-cli
 2. ngbootstrap via system-config
 3. manually adjust the package.json file in the heroku directory for deployment.
 
+## August 11, 2016
+
+Better implmented the Express Router for the Quiz routes.
+	router.param for the routes with a Quiz id
+	router.route for Quiz to handle multiple http request with a single instance
+Continued to build out the CRUD for Quiz and Question.
+Refactored the User route to populate the Quizzes array, instead of making a seperate request to find by the Quizzes Object Id.
+
+--------------------------------
+
 ## August 9
 
 Mongoose Quiz and child Question models.

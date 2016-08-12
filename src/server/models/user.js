@@ -12,6 +12,7 @@ var userSchema = new Schema({
 	salt: { type: String, required: true },
 	state: { type: String, enum: [ 'basic', 'super', 'admin' ], default: 'basic' },
 	quizzes: [{ type: Schema.Types.ObjectId, ref: 'Quiz' }]
+	// last quiz completed by date
 });
 
 userSchema.plugin(mongooseUniqueValidator);
