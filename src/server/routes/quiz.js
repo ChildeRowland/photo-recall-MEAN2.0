@@ -139,7 +139,7 @@ router.route('/:id')
 
 router.route('/:id/question')
 	// ADD A QUESTION TO A QUIZ
-	.post('/:id/question', function (req, res, next) {
+	.post(function (req, res, next) {
 		if (req.quiz) {
 			var quiz = req.quiz;
 			var orderNumber = quiz.questions.length + 1;
@@ -165,7 +165,71 @@ router.route('/:id/question')
 				});
 			});
 		}
+	})
+	// UPDATE A SINGLE QUESTION
+	.patch(function (req, res, next) {
+		if (req.quiz) {
+			var quiz = req.quiz;
+			var question = quiz.questions.id(req.body._id);
+
+			if (!question) {
+				return res.status(404).json({
+					code: 404,
+					message: "Could not find Question"
+				});
+			}
+				
+			question.question = req.body.question;
+			question.answers = req.body.answers;
+			question.hints = req.body.hints;
+
+			quiz.save(function (err, result) {
+				if (err) {
+					return res.status(500).json({
+						code: 500,
+						message: "There was an error while trying to update the question",
+						error: err
+					});
+				}
+				res.status(202).json({ 
+					code: 202,
+					message: "Question updated",
+					obj: question
+				});
+			});
+		}
+	})
+	// DELETE A SINGLE QUESTION
+	.delete(function (req, res, next) {
+		if (req.quiz) {
+			var quiz = req.quiz;
+			var question = quiz.questions.id(req.body._id);
+
+			if (!question) {
+				return res.status(404).json({
+					code: 404,
+					message: "Could not find the Question"
+				});
+			}
+
+			question.remove();
+			quiz.save(function (err, result) {
+				if (err) {
+					return res.status(500).json({
+						code: 500,
+						message: "An error occured while trying to delete the Question",
+						error: err
+					});
+				}
+				res.status(200).json({
+					code: 200,
+					message: "Question deleted",
+					obj: question
+				});
+			});
+		}
 	});
+
 
 module.exports = router;
 
