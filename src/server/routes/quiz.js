@@ -2,65 +2,11 @@
 
 var express = require('express');
 var router = express.Router();
+var jwt = require('jsonwebtoken');
 
 var User = require('../models/user');
 var Quiz = require('../models/quiz');
 
-// ADD A QUIZ
-router.post('/', function (req, res, next) {
-	// User Id is temp unecrypted, and saved in localstorage
-	var userId = req.body.userId;
-
-	User.findById(userId, function (err, doc) {
-		if (err) {
-			return res.status(500).json({
-				code: 500,
-				message: "An error occurred while getting the user",
-				error: err
-			});
-		}
-
-		if (!doc) {
-			return res.status(404).json({
-				code: 404,
-				message: "Could not find the user by id"
-			});
-		}
-
-		if (doc) {
-
-			var user = doc;
-			var quiz = new Quiz({
-				image: req.body.image,
-			});
-
-			quiz.save(function (err, result) {
-				if (err) {
-					return res.status(500).json({
-						code: 500,
-						message: "An error occurred while saving quiz info",
-						error: err
-					});
-				}
-
-				user.quizzes.push(result);
-				user.save(function (err, result) {
-					if (err) {
-						return res.status(500).json({
-							code: 500,
-							message: "An error occurred while assigning the quiz to the user",
-							error: err
-						});
-					}
-					res.status(200).json({
-						code: 200,
-						message: "Quiz assigned to User",
-					});
-				});
-			});
-		}
-	});
-});
 
 // GET ALL THE QUIZZES
 router.get('/', function (req, res, next) {
@@ -80,27 +26,116 @@ router.get('/', function (req, res, next) {
 	});
 });
 
-// Runs with any route path containing "id"
-router.param('id', function(req, res, next) {
-	Quiz.findById(req.params.id, function (err, doc) {
+
+// PROTECTED ROUTES
+
+router.use('/', function (req, res, next) {
+	var token = req.get('Authorization');
+	var salt = req.get('Salt');
+	
+	jwt.verify(token, salt, function(err, decoded) {
+        if (err) {
+            return res.status(401).json({
+                message: "Not Authorized",
+                error: err
+            });
+        }
+        if (!decoded) {
+        	return res.status(404).json({
+        		code: 404,
+        		message: "Could not find this user"
+        	});
+        }
+        if (decoded) {
+        	User.findById(decoded.user, function (err, doc) {
+				if (err) {
+					return res.status(500).json({
+						code: 500,
+						message: "An error occurred while getting the user",
+						error: err
+					});
+				}
+				if (!doc) {
+					return res.status(404).json({
+						code: 404,
+						message: "Could not find the user by id"
+					});
+				}
+				if (doc) {
+					req.user = doc;
+					next();
+				}
+			});
+        }
+    });
+});
+
+
+// ADD A QUIZ
+router.post('/', function (req, res, next) {
+	var user = req.user;
+	var quiz = new Quiz({
+		image: req.body.image,
+	});
+
+	quiz.save(function (err, result) {
 		if (err) {
 			return res.status(500).json({
 				code: 500,
-				message: "An error occurred while getting this quiz",
+				message: "An error occurred while saving quiz info",
 				error: err
 			});
 		}
-		if (!doc) {
-			return res.status(404).json({
-				code: 404,
-				message: "No quiz found"
+
+		user.quizzes.push(result);
+		user.save(function (err, result) {
+			if (err) {
+				return res.status(500).json({
+					code: 500,
+					message: "An error occurred while assigning the quiz to the user",
+					error: err
+				});
+			}
+			res.status(200).json({
+				code: 200,
+				message: "Quiz assigned to User",
 			});
-		} else {
-			// add the document to the request object
-			req.quiz = doc;
-			next();
-		}
+		});
 	});
+});
+
+// Runs with any route path containing "id"
+router.param('id', function(req, res, next) {
+	var user = req.user;
+	var quizId = req.params.id;
+	console.log(user.quizzes.indexOf(quizId));
+	// check the user for the quiz id in the quizzes array
+	if ( user.quizzes.indexOf(quizId) >= 0 ) {
+		Quiz.findById(req.params.id, function (err, doc) {
+			if (err) {
+				return res.status(500).json({
+					code: 500,
+					message: "An error occurred while getting this quiz",
+					error: err
+				});
+			}
+			if (!doc) {
+				return res.status(404).json({
+					code: 404,
+					message: "No quiz found"
+				});
+			} else {
+				// add the document to the request object
+				req.quiz = doc;
+				next();
+			}
+		});
+	} else {
+		return res.status(400).json({
+			code: 400,
+			message: "Not Authorized to change this quiz"
+		});
+	}
 });
 
 router.route('/:id')

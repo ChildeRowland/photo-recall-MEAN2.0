@@ -74,7 +74,7 @@ router.post('/signin', function (req, res, next) {
 				if ( doc.password == result ) {
 					var tokenSalt = config.addSalt();
 
-					jwt.sign({ user: doc }, tokenSalt, { expiresIn: 7200 }, function (err, token) {
+					jwt.sign({ user: doc.id }, tokenSalt, { expiresIn: 7200 }, function (err, token) {
 						if (err) {
 							res.status(500).json({
 								message: "An error occurred while generating web token",
@@ -102,30 +102,43 @@ router.post('/signin', function (req, res, next) {
 });
 
 // GET THE CURRENT USER QUIZZES
-router.get('/:id/quizzes', function (req, res, next) {
-	var userId = req.params.id;
+router.get('/quizzes', function (req, res, next) {
+	var token = req.get('Authorization');
+	var salt = req.get('Salt');
+	var userId;
 
-	User.findById(userId, function (err, doc) {
-		if (err) {
-			return res.status(500).json({
-				code: 500,
-				message: "An error occurred while getting the user",
-				error: err
+	jwt.verify(token, salt, function(err, decoded) {
+        if (err) {
+            return res.status(401).json({
+                message: 'Not Authorized',
+                error: err
+            });
+        }
+        if (decoded) {
+
+        	User.findById(decoded.user, function (err, doc) {
+				if (err) {
+					return res.status(500).json({
+						code: 500,
+						message: "An error occurred while getting the user",
+						error: err
+					});
+				}
+			// Use populate funtion to send the quizzes array with complete objects
+			}).populate('quizzes').exec(function(err, doc) {
+				if (err) {
+					return res.status(500).json({
+						message: 'An error occured',
+						error: err
+					});
+				}
+				res.status(200).json({
+					message: 'Successfully got User and Quizzes',
+					obj: doc
+				});
 			});
-		}
-	// Use populate funtion to send the quizzes array with complete objects
-	}).populate('quizzes').exec(function(err, doc) {
-		if (err) {
-			return res.status(500).json({
-				message: 'An error occured',
-				error: err
-			});
-		}
-		res.status(200).json({
-			message: 'Successfully got User and Quizzes',
-			obj: doc
-		});
-	});
+        }
+    });
 });
 
 module.exports = router;
