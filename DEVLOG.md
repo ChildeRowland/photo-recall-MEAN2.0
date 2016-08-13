@@ -16,13 +16,21 @@ Deploying MEAN2.0 applications with angular-cli
 2. ngbootstrap via system-config
 3. manually adjust the package.json file in the heroku directory for deployment.
 
+--------------------------------
+
+## August 12
+
+Added token verification to the Quiz routes and the User route that populates the user sub-documents. Send the token and the salt necessary for verification via the header.  Using Express router.use to get the header data, decode the token and add the user id to request. The rest of the routes use the user id to complete CRUD operations.
+
+--------------------------------
+
 ## August 11, 2016
 
-Better implmented the Express Router for the Quiz routes.
+Better implemented the Express Router for the Quiz routes.
 	router.param for the routes with a Quiz id
 	router.route for Quiz to handle multiple http request with a single instance
 Continued to build out the CRUD for Quiz and Question.
-Refactored the User route to populate the Quizzes array, instead of making a seperate request to find by the Quizzes Object Id.
+Re-factored the User route to populate the Quizzes array, instead of making a seperate request to find by the Quizzes Object Id.
 
 --------------------------------
 
