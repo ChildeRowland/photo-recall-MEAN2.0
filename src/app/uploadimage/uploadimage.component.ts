@@ -1,24 +1,33 @@
+/*
+Component is doing the work of a service. 
+This is a temperary solution to save uploaded images localy.
+Once the game flow is set, and Angular2 is released, images will be hosted elsewhere.
+*/
+
 import { Component } from '@angular/core';
+import { environment } from '../environment';
 
 @Component({
 	moduleId: module.id,
 	selector: 'app-uploadimage',
 	template: `
-		<input type="file" accept="image/*" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
-		<button type="button" (click)="upload()">Upload</button>
+        <input type="file" accept="image/*" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
+        <button type="button" (click)="upload()">Upload</button>
 	`,
 	styleUrls: ['uploadimage.component.css']
 })
 
 export class UploadimageComponent {
+    url: string;
 	filesToUpload: Array<File>;
  
     constructor() {
         this.filesToUpload = [];
+        this.url = environment.production ? 'https://photorecall.herokuapp.com/upload' : 'http://localhost:3000/upload';
     }
  
     upload() {
-        this.makeFileRequest("http://localhost:3000/upload", [], this.filesToUpload).then((result) => {
+        this.makeFileRequest(this.url, [], this.filesToUpload).then((result) => {
             console.log(result);
         }, (error) => {
             console.error(error);
@@ -47,9 +56,13 @@ export class UploadimageComponent {
             }
             xhr.open("POST", url, true);
             // add the auth token and salt to the header
-            xhr.setRequestHeader("X-Authentication", "Taco Bean");
+            xhr.setRequestHeader("X-Authorization", localStorage.getItem('token'));
+            xhr.setRequestHeader("X-Salt", localStorage.getItem('salt'));
             xhr.send(formData);
         });
     }
 
 }
+
+
+
