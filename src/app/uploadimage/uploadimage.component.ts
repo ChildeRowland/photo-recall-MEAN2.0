@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 	moduleId: module.id,
 	selector: 'app-uploadimage',
 	template: `
-		<input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
+		<input type="file" accept="image/*" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
 		<button type="button" (click)="upload()">Upload</button>
 	`,
 	styleUrls: ['uploadimage.component.css']
@@ -34,7 +34,7 @@ export class UploadimageComponent {
             var formData: any = new FormData();
             var xhr = new XMLHttpRequest();
             for(var i = 0; i < files.length; i++) {
-                formData.append("uploads[]", files[i], files[i].name);
+                formData.append("newImage", files[i], files[i].name);
             }
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4) {
@@ -46,6 +46,8 @@ export class UploadimageComponent {
                 }
             }
             xhr.open("POST", url, true);
+            // add the auth token and salt to the header
+            xhr.setRequestHeader("X-Authentication", "Taco Bean");
             xhr.send(formData);
         });
     }

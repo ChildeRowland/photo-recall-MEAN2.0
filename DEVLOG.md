@@ -18,6 +18,18 @@ Deploying MEAN2.0 applications with angular-cli
 
 --------------------------------
 
+## August 14
+
+Updated the /upload route to take advantage of the multer module diskStorage function.  Now the files keep their original name, along with the date and file extension.  This should be easier to save the location to the db.
+
+--------------------------------
+
+## August 13
+
+Re-evaluated options for photo uploading.  While using a external service is clearly the best option, in the mean time I'm going to save files locally, with restrictions on file size and number of images.  
+
+--------------------------------
+
 ## August 12
 
 Added token verification to the Quiz routes and the User route that populates the user sub-documents. Send the token and the salt necessary for verification via the header.  Using Express router.use to get the header data, decode the token and add the user id to request. The rest of the routes use the user id to complete CRUD operations.
