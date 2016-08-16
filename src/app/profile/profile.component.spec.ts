@@ -2,6 +2,7 @@
 
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { Router }		from '@angular/router';
 
 import {
   beforeEach, beforeEachProviders,
@@ -13,8 +14,10 @@ import {
 import { ProfileComponent } from './profile.component';
 
 describe('Component: Profile', () => {
+	let router: Router;
+
   it('should create an instance', () => {
-    let component = new ProfileComponent();
+    let component = new ProfileComponent(router);
     expect(component).toBeTruthy();
   });
 });

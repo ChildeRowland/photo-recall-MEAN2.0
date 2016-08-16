@@ -12,7 +12,7 @@ import { MessengerService } from '../services/messenger/messenger.service'
 	templateUrl: 'signin.component.html',
 	styleUrls: ['signin.component.css'],
 	directives: [ REACTIVE_FORM_DIRECTIVES ],
-	providers: [ AuthService, MessengerService ]
+	providers: [ MessengerService ]
 })
 
 export class SigninComponent implements OnInit {

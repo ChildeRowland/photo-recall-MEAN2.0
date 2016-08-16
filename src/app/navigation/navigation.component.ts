@@ -3,6 +3,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { LogoutComponent } from '../logout/logout.component';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
 	moduleId: module.id,
@@ -15,9 +16,9 @@ export class NavigationComponent implements OnInit {
 	signinTitle = "Sign In";
 	signupTitle = "New User";
 
-	constructor() {}
+	constructor(private _authService: AuthService) { }
 
-	ngOnInit() {}
+	ngOnInit() { }
 
 	// check for user token in local storage
 	// move this to a service and verify the user token hasn't expired

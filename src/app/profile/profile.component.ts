@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	moduleId: module.id,
@@ -9,8 +10,16 @@ import { Component, OnInit } from '@angular/core';
 
 export class ProfileComponent implements OnInit {
 
-	constructor() {}
+	constructor(private _router: Router) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		// this.isUser();
+	}
+
+	isUser() {
+		if (!localStorage.getItem('token')) {
+			this._router.navigateByUrl('/');
+		}
+	}
 
 }

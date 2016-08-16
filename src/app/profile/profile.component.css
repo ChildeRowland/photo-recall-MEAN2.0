@@ -8,3 +8,10 @@
     left: 15px;
     right: 0;
 }
+
+.thumbnail>div {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	bottom: 0;
+}

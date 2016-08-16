@@ -11,10 +11,13 @@ import {
 } from '@angular/core/testing';
 
 import { NavigationComponent } from './navigation.component';
+import { AuthService } from '../auth/auth.service';
 
 describe('Component: Navigation', () => {
+	let authService: AuthService;
+
   it('should create an instance', () => {
-    let component = new NavigationComponent();
+    let component = new NavigationComponent(authService);
     expect(component).toBeTruthy();
   });
 });

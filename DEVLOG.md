@@ -16,6 +16,14 @@ Deploying MEAN2.0 applications with angular-cli
 2. ngbootstrap via system-config
 3. manually adjust the package.json file in the heroku directory for deployment.
 
+## August 16
+
+Ran into problems using ngIf and the routerLink. When loading new elements into the DOM, the routerLink path is wrong, pointing to '/' or '/another-route'.  Refreshing the page fixes this.
+
+Wrote a function on the AuthService that verifies the users credentials, and returns a boolean. This way, if the credentials expire, the session will end before trying to submit a request that requires verification.  This turned out to be clunky to implement, requiring change detection.  So in the meantime, the app checks for the localStorage token, and send back a 401 when a user tries to change something after the token expires.
+
+--------------------------------
+
 ## August 15
 
 Merged the Create Quiz route with the Upload route.  Now users can select a single image file, upload it to the app's file system.  When the imaged is uploaded, a new quiz is created by saving the name of the file to the db.

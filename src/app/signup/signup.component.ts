@@ -11,7 +11,7 @@ import { MessengerService } from '../services/messenger/messenger.service';
 	templateUrl: 'signup.component.html',
 	styleUrls: ['signup.component.css'],
 	directives: [ REACTIVE_FORM_DIRECTIVES ],
-	providers: [ AuthService, MessengerService ]
+	providers: [ MessengerService ]
 })
 
 export class SignupComponent implements OnInit {

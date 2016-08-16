@@ -1,5 +1,5 @@
 import { environment } from '../environment';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
@@ -9,7 +9,7 @@ import { User } from '../classes/user/user';
 @Injectable()
 export class AuthService {
 	private _url = environment.production ? 'https://photorecall.herokuapp.com/user' : 'http://localhost:3000/user';
-	
+
 	constructor(private _http: Http) { }
 
 	signup(user:User) {
@@ -32,7 +32,7 @@ export class AuthService {
 
 	logout() {
 		localStorage.clear();
-		console.log(localStorage);
+		console.log("User logged out");
 	}
 
 }
