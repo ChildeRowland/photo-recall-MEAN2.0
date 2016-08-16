@@ -54,6 +54,7 @@ const barrels: string[] = [
   'app/questions/question',
   'app/image',
   'app/game',
+  'app/profile',
   /** @cli-barrel */
 ];
 

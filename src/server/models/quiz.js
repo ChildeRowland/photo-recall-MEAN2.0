@@ -17,6 +17,8 @@ var quizSchema = new Schema({
 	image: { type: String, unique: true, required: true },
 	questions: [questionSchema]
 	// published, description, createdAt
+}, { 
+	timestamps: true
 });
 
 quizSchema.plugin(mongooseUniqueValidator);

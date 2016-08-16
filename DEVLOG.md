@@ -16,6 +16,12 @@ Deploying MEAN2.0 applications with angular-cli
 2. ngbootstrap via system-config
 3. manually adjust the package.json file in the heroku directory for deployment.
 
+## August 15
+
+Merged the Create Quiz route with the Upload route.  Now users can select a single image file, upload it to the app's file system.  When the imaged is uploaded, a new quiz is created by saving the name of the file to the db.
+
+Began work on the visible content that a user will see when signed it.  Originally thought I would group Custom Quizzes, User Profile, and game sessions all on the same page. 
+
 --------------------------------
 
 ## August 14

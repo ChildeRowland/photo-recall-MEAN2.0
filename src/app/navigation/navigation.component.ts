@@ -19,6 +19,8 @@ export class NavigationComponent implements OnInit {
 
 	ngOnInit() {}
 
+	// check for user token in local storage
+	// move this to a service and verify the user token hasn't expired
 	isUser() {
 		return localStorage.getItem('token') != undefined;
 	}
