@@ -18,7 +18,7 @@ export class SignupComponent implements OnInit {
 	signupForm: FormGroup;
 	submitting = false;
 
-	constructor(public messengerService:MessengerService, private _fb:FormBuilder, private _authService: AuthService) {}
+	constructor(public messengerService:MessengerService, private _fb:FormBuilder, private _authService:AuthService) {}
 
 	ngOnInit() {
 		this.signupForm = this._fb.group({
@@ -61,6 +61,7 @@ export class SignupComponent implements OnInit {
 							console.log(data);
 							localStorage.setItem('token', data.token);
 							localStorage.setItem('salt', data.salt);
+							// remove for deploy
 							localStorage.setItem('userId', data.userId);
 						}, err => console.log(err),
 						() => this.submitting = false);

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var scrypt = require('js-scrypt');
 var jwt = require('jsonwebtoken');
-
+// create random string for salt or key
 var config = require('../config').security;
 var User = require('../models/user');
 
