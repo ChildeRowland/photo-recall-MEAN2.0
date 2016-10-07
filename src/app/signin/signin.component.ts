@@ -1,6 +1,6 @@
 import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { User } from '../classes/user/user';
 import { AuthService } from '../auth/auth.service'
@@ -11,7 +11,6 @@ import { MessengerService } from '../services/messenger/messenger.service'
 	selector: 'app-signin',
 	templateUrl: 'signin.component.html',
 	styleUrls: ['signin.component.css'],
-	directives: [ REACTIVE_FORM_DIRECTIVES ],
 	providers: [ MessengerService ]
 })
 

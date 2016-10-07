@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { User } from '../classes/user/user';
 import { AuthService } from '../auth/auth.service';
@@ -10,7 +10,6 @@ import { MessengerService } from '../services/messenger/messenger.service';
 	selector: 'app-signup',
 	templateUrl: 'signup.component.html',
 	styleUrls: ['signup.component.css'],
-	directives: [ REACTIVE_FORM_DIRECTIVES ],
 	providers: [ MessengerService ]
 })
 

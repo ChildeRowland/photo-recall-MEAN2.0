@@ -18,14 +18,30 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthService } from './auth/auth.service';
 
 @NgModule({
-  imports: [ BrowserModule, routing, HttpModule, FormsModule, ReactiveFormsModule ], // module dependencies
+	imports: [ // module dependencies
+		BrowserModule, 
+		routing, 
+		HttpModule, 
+		FormsModule, 
+		ReactiveFormsModule 
+	], 
 
-  declarations: [ AppComponent, NavigationComponent, FaqComponent,
-  				  GameComponent, QuizComponent, ProfileComponent ], // components and directives
+	declarations: [ // components and directives
+		AppComponent, 
+		NavigationComponent, 
+		FaqComponent,
+		GameComponent, 
+		QuizComponent, 
+		ProfileComponent 
+	], 
 
-  bootstrap: [ AppComponent ],     		// root component
+	providers: [ // services
+		appRoutingProviders, 
+		AuthService, 
+		FormBuilder 
+	],
 
-  providers: [ appRoutingProviders, AuthService, FormBuilder ]   // services
+  	bootstrap: [ AppComponent ] // root component
 })
 
 export class AppModule { }
