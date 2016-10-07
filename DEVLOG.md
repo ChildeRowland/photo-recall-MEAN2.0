@@ -18,7 +18,10 @@ Deploying MEAN2.0 applications with angular-cli
 
 ## Updates: sub-log
 
-error when running ng build
+RC5 - complete
+Tests no longer working with Jasmine
+Typings errors for certain import modules
+RC4 - complete
 node_modules/angular-cli/node_modules/broccoli-merge-trees/index.js
 line 37: this.options = { overwrite: true };
 
