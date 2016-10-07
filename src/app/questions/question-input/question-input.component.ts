@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FORM_PROVIDERS, FORM_DIRECTIVES } from '@angular/common';
 
 import { Question } from '../../classes/question/question';
 import { MessengerService } from '../../services/messenger/messenger.service';
@@ -10,8 +11,8 @@ import { QuestionService } from '../question.service';
 	selector: 'app-question-input',
 	templateUrl: 'question-input.component.html',
 	styleUrls: ['question-input.component.css'],
-	directives: [ REACTIVE_FORM_DIRECTIVES ],
-	providers: [ MessengerService ]
+	directives: [ REACTIVE_FORM_DIRECTIVES, FORM_DIRECTIVES ],
+	providers: [ MessengerService, FORM_PROVIDERS ]
 })
 export class QuestionInputComponent implements OnInit {
 	editable = false;

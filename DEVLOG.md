@@ -16,6 +16,12 @@ Deploying MEAN2.0 applications with angular-cli
 2. ngbootstrap via system-config
 3. manually adjust the package.json file in the heroku directory for deployment.
 
+## Updates: sub-log
+
+error when running ng build
+node_modules/angular-cli/node_modules/broccoli-merge-trees/index.js
+line 37: this.options = { overwrite: true };
+
 ## August 16
 
 Ran into problems using ngIf and the routerLink. When loading new elements into the DOM, the routerLink path is wrong, pointing to '/' or '/another-route'.  Refreshing the page fixes this.

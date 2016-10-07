@@ -1,23 +1,23 @@
 /* tslint:disable:no-unused-variable */
 
-import {
-  beforeEach, beforeEachProviders,
-  describe, xdescribe,
-  expect, it, xit,
-  async, inject
-} from '@angular/core/testing';
-import {User} from './user';
+// import {
+//   beforeEach, beforeEachProviders,
+//   describe, xdescribe,
+//   expect, it, xit,
+//   async, inject
+// } from '@angular/core/testing';
+// import {User} from './user';
 
-describe('User', () => {
+// describe('User', () => {
 
-	it('should create an instance', () => {
-		expect(new User('email', 'password', 'name')).toBeTruthy();
-	});
+// 	it('should create an instance', () => {
+// 		expect(new User('email', 'password', 'name')).toBeTruthy();
+// 	});
 
-	it('should allow name parameter to be optional', () => {
-		expect(new User('email', 'password')).toBeTruthy();
-	});
+// 	it('should allow name parameter to be optional', () => {
+// 		expect(new User('email', 'password')).toBeTruthy();
+// 	});
 
-});
+// });
 
 

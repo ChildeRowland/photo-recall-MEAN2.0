@@ -1,19 +1,19 @@
 /* tslint:disable:no-unused-variable */
 
-import {
-  beforeEach, beforeEachProviders,
-  describe, xdescribe,
-  expect, it, xit,
-  async, inject
-} from '@angular/core/testing';
-import { AppComponent } from './app.component';
+// import {
+//   beforeEach, beforeEachProviders,
+//   describe, xdescribe,
+//   expect, it, xit,
+//   async, inject
+// } from '@angular/core/testing';
+// import { AppComponent } from './app.component';
 
-beforeEachProviders(() => [AppComponent]);
+// beforeEachProviders(() => [AppComponent]);
 
-describe('App: CmEx', () => {
-  it('should create the app',
-      inject([AppComponent], (app: AppComponent) => {
-    expect(app).toBeTruthy();
-  }));
+// describe('App: CmEx', () => {
+//   it('should create the app',
+//       inject([AppComponent], (app: AppComponent) => {
+//     expect(app).toBeTruthy();
+//   }));
 
-});
+// });

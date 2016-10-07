@@ -1,23 +1,14 @@
-import { bootstrap } from '@angular/platform-browser-dynamic';
-import { provide, enableProdMode } from '@angular/core';
-import { HTTP_PROVIDERS } from '@angular/http';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
+// import { enableProdMode } from '@angular/core';
+// import { environment } from './app/environment';
 
-import { AppComponent, environment } from './app/';
-import { appRouterProviders } from './app/app.routes';
-import { AuthService } from './app/auth/auth.service';
+// if (environment.enableAngularProductionMode) {
+//     enableProdMode();
+// }
 
-if (environment.production) {
-  enableProdMode();
-}
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
 
-bootstrap(AppComponent, [ HTTP_PROVIDERS, 
-						  appRouterProviders, 
-						  AuthService,
-						  disableDeprecatedForms(), 
-						  provideForms(),
-						  provide(LocationStrategy, {useClass: HashLocationStrategy})
-						])
-	.catch(err => console.error(err));
+platformBrowserDynamic().bootstrapModule(AppModule);
+
+
 

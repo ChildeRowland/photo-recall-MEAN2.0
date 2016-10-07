@@ -1,23 +1,23 @@
 /* tslint:disable:no-unused-variable */
 
-import { By }           from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+// import { By }           from '@angular/platform-browser';
+// import { DebugElement } from '@angular/core';
 
-import {
-  beforeEach, beforeEachProviders,
-  describe, xdescribe,
-  expect, it, xit,
-  async, inject
-} from '@angular/core/testing';
+// import {
+//   beforeEach, beforeEachProviders,
+//   describe, xdescribe,
+//   expect, it, xit,
+//   async, inject
+// } from '@angular/core/testing';
 
-import { NavigationComponent } from './navigation.component';
-import { AuthService } from '../auth/auth.service';
+// import { NavigationComponent } from './navigation.component';
+// import { AuthService } from '../auth/auth.service';
 
-describe('Component: Navigation', () => {
-	let authService: AuthService;
+// describe('Component: Navigation', () => {
+// 	let authService: AuthService;
 
-  it('should create an instance', () => {
-    let component = new NavigationComponent(authService);
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create an instance', () => {
+//     let component = new NavigationComponent(authService);
+//     expect(component).toBeTruthy();
+//   });
+// });

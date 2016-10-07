@@ -1,23 +1,23 @@
 /* tslint:disable:no-unused-variable */
 
-import { By }           from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+// import { By }           from '@angular/platform-browser';
+// import { DebugElement } from '@angular/core';
 
-import {
-  beforeEach, beforeEachProviders,
-  describe, xdescribe,
-  expect, it, xit,
-  async, inject
-} from '@angular/core/testing';
+// import {
+//   beforeEach, beforeEachProviders,
+//   describe, xdescribe,
+//   expect, it, xit,
+//   async, inject
+// } from '@angular/core/testing';
 
-import { QuestionComponent } from './question.component';
-import { QuestionService } from '../question.service';
+// import { QuestionComponent } from './question.component';
+// import { QuestionService } from '../question.service';
 
-describe('Component: Question', () => {
-	let questionService: QuestionService;
+// describe('Component: Question', () => {
+// 	let questionService: QuestionService;
 
-  it('should create an instance', () => {
-    let component = new QuestionComponent(this.questionService);
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create an instance', () => {
+//     let component = new QuestionComponent(this.questionService);
+//     expect(component).toBeTruthy();
+//   });
+// });
