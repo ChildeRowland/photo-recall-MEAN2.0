@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FORM_PROVIDERS, FORM_DIRECTIVES } from '@angular/common';
-import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 
 import { Question } from '../../classes/question/question';
 import { QuestionService } from '../question.service';
@@ -9,9 +7,7 @@ import { QuestionService } from '../question.service';
 	moduleId: module.id,
 	selector: 'app-question',
 	templateUrl: 'question.component.html',
-	styleUrls: ['question.component.css'],
-	directives: [ FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES ],
-	providers: [ FORM_PROVIDERS ]
+	styleUrls: ['question.component.css']
 })
 
 export class QuestionComponent implements OnInit {
